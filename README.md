@@ -8,6 +8,7 @@ Offline reading + practice workspace for:
 ## What's in this repo
 
 - `build_offline_bundle.py` - builder script that downloads and generates local offline content
+- `setup_offline.sh` - one-command bootstrap to generate local offline content
 - `exercises/` - per-chapter practice folders
 
 Generated locally (not committed):
@@ -18,6 +19,12 @@ Generated locally (not committed):
 ## Usage
 
 Generate the local offline bundle:
+
+```bash
+./setup_offline.sh
+```
+
+Or run the builder directly:
 
 ```bash
 python3 build_offline_bundle.py
