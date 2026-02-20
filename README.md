@@ -9,6 +9,8 @@ Offline reading + practice workspace for:
 
 - `build_offline_bundle.py` - builder script that downloads and generates local offline content
 - `setup_offline.sh` - one-command bootstrap to generate local offline content
+- `BEGIN_HERE.command` - double-click launcher for macOS users
+- `BEGIN_HERE.bat` - double-click launcher for Windows users
 - `exercises/` - per-chapter practice folders
 
 Generated locally (not committed):
@@ -17,6 +19,29 @@ Generated locally (not committed):
 - `offline_content/index.html` - interleaved reading order (book chapter, then workbook chapter)
 
 ## Usage
+
+### Prerequisite
+
+- Python 3 must be installed.
+
+Quick check:
+
+```bash
+python3 --version
+```
+
+Beginner no-terminal option:
+
+- macOS: double-click `BEGIN_HERE.command`
+- Windows: double-click `BEGIN_HERE.bat`
+
+This generates `offline_content/` and opens `offline_content/index.html` automatically.
+
+If macOS blocks the script on first run, right-click `BEGIN_HERE.command` and choose **Open**.
+
+If Python is missing, install it from `https://www.python.org/downloads/` and run again.
+
+Terminal option:
 
 Generate the local offline bundle:
 
