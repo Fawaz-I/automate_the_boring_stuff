@@ -7,24 +7,26 @@ Offline reading + practice workspace for:
 
 ## What's in this repo
 
-- `offline_content/` - offline mirrored pages and assets
-- `offline_content/index.html` - interleaved reading order (book chapter, then workbook chapter)
-- `offline_content/refresh.py` - rebuild/update offline bundle
+- `build_offline_bundle.py` - builder script that downloads and generates local offline content
 - `exercises/` - per-chapter practice folders
-- `build_offline_bundle.py` - builder script used to generate the bundle
+
+Generated locally (not committed):
+
+- `offline_content/` - mirrored pages and assets
+- `offline_content/index.html` - interleaved reading order (book chapter, then workbook chapter)
 
 ## Usage
 
-Open `offline_content/index.html` in your browser.
-
-To refresh/update the offline bundle:
+Generate the local offline bundle:
 
 ```bash
-python3 offline_content/refresh.py
+python3 build_offline_bundle.py
 ```
+
+Then open `offline_content/index.html` in your browser.
 
 ## Licensing Note
 
-The book content is authored by Al Sweigart and provided online under Creative Commons terms.
-Before publishing this repo publicly, review and comply with the source license requirements
-(attribution, non-commercial restrictions, and share-alike, where applicable).
+- `LICENSE` (MIT) covers original repository code/scripts.
+- Mirrored book/workbook content remains third-party content and follows its original Creative Commons terms.
+- See `THIRD_PARTY_LICENSES.md` for attribution and licensing details.
