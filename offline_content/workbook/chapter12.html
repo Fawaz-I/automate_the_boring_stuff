@@ -1,0 +1,176 @@
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><link href="../assets/inventwithpython.com/automate3workbook/style.css" rel="stylesheet" type="text/css" /><title>Automate the Boring Stuff with Python Workbook: Projects and Exercises to Sharpen Your Python Skills</title></head><body><style>.atbs-nav{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;justify-content:space-between;margin:1rem 0;padding:.7rem .8rem;border:1px solid #cfd8dc;border-radius:10px;background:#f6fbfd;font:14px/1.35 system-ui,-apple-system,sans-serif;}.atbs-nav-center{color:#455a64;font-weight:600;}.atbs-nav-link{text-decoration:none;color:#0b5b6b;background:#e6f3f7;border:1px solid #c7dfe7;border-radius:7px;padding:.42rem .55rem;display:inline-block;}.atbs-nav-link:hover{background:#d9edf3;}.atbs-nav-disabled{opacity:.55;cursor:not-allowed;}</style><nav class='atbs-nav' aria-label='Chapter pagination'><a class='atbs-nav-link' href='../book/chapter12.html' aria-label='Previous chapter'>&larr; Book Chapter 12</a><span class='atbs-nav-center'><a class='atbs-nav-link' href='../index.html'>Contents</a> Workbook Chapter 12</span><a class='atbs-nav-link' href='../book/chapter13.html' aria-label='Next chapter'>Book Chapter 13 &rarr;</a></nav>
+
+
+
+
+
+<div class="calibre" id="calibre_link-20">
+<section type="chapter" role="doc-chapter" aria-labelledby="ch12">
+<h1 id="calibre_link-2681" type="title" class="h1ch"><span role="doc-pagebreak" id="calibre_link-2682" aria-label="81" class="calibre1"></span><span class="big">12</span><span class="break1"></span>DESIGNING AND DEPLOYING COMMAND LINE PROGRAMS</h1>
+<p class="noindent-c">Users are accustomed to interacting with the computer through a graphical user interface (GUI), but experienced programmers are much more effective when working in a command line terminal. Once you’ve mastered the command line, you’ll know how to create minimal but efficient programs with simple text-based interfaces.</p>
+<aside type="sidebar" class="sidebar" aria-labelledby="side12" role="doc-example">
+<section>
+<h2 type="title" class="stitle" id="calibre_link-2683"><img class="inline" src="../assets/inventwithpython.com/automate3workbook/images/000000.jpg" alt="A simple drawing of a light bulb." /> LEARNING OBJECTIVES</h2>
+<ul class="b-bullet">
+<li class="bull">Know how to set up your Python programs to easily run them outside the code editor.</li>
+<li class="bull">Understand command line interfaces, including how programs present information as output and accept user input.</li>
+<li class="bull">Become familiar and comfortable with software jargon.</li>
+<li class="bull">Be able to create virtual environments for your programming projects and avoid package version conflicts.</li>
+<li class="bull">Master the use of PyMsgBox to create dialog boxes for a lightweight GUI.</li>
+<li class="bull">Know how to compile your Python programs with PyInstaller so that you can run them on computers that don’t have Python installed.</li>
+</ul>
+</section>
+</aside>
+<section>
+<h2 id="calibre_link-151" type="title" class="h"><span role="doc-pagebreak" id="calibre_link-2684" aria-label="82" class="calibre1"></span><img class="inline" src="../assets/inventwithpython.com/automate3workbook/images/000005.jpg" alt="A grey circle with a white question mark at the center" /> Practice Questions</h2>
+<p class="noindent">These questions test your understanding of the terminal in Windows, macOS, and Linux and your ability to run Python programs from them.</p>
+<section>
+<h3 id="calibre_link-152" type="title" class="h1">A Program by Any Other Name</h3>
+<p class="noindent">Programming uses many terms that mean “a program” or some slight variation of the term. But there are subtle differences between what these names mean. Answer the following questions about different jargon terms.</p>
+<ol class="order">
+<li class="calibre15"><p class="number"><a href="#calibre_link-814" id="calibre_link-1948" class="calibre6">1</a>. What’s the difference between a program and a command?</p></li>
+<li class="calibre15"><p class="number"><a href="#calibre_link-815" id="calibre_link-1949" class="calibre6">2</a>. What’s the difference between a command and an application?</p></li>
+<li class="calibre15"><p class="number"><a href="#calibre_link-816" id="calibre_link-1950" class="calibre6">3</a>. What’s an interactive command?</p></li>
+<li class="calibre15"><p class="number"><a href="#calibre_link-817" id="calibre_link-1951" class="calibre6">4</a>. Do the terms <i class="calibre5">script</i>, <i class="calibre5">command</i>, <i class="calibre5">application</i>, and <i class="calibre5">web app</i> all refer to types of programs?</p></li>
+</ol>
+</section>
+<section>
+<h3 id="calibre_link-153" type="title" class="h1">Using the Terminal</h3>
+<p class="noindent">A command line interface doesn’t have the icons, buttons, and graphics of a GUI, but it’s an effective way to use a computer once you’ve learned several of its commands. Answer the following questions about the command line terminal.</p>
+<ol class="order">
+<li class="calibre15"><p class="number"><a href="#calibre_link-818" id="calibre_link-1952" class="calibre6">5</a>. What are the names of the terminal applications on Windows, macOS, and Linux?</p></li>
+<li class="calibre15"><p class="number"><a href="#calibre_link-819" id="calibre_link-1953" class="calibre6">6</a>. What does the tilde character (<span class="literal">~</span>) represent in the terminal?</p></li>
+<li class="calibre15"><p class="number"><a href="#calibre_link-820" id="calibre_link-1954" class="calibre6">7</a>. What is the filename of the Python interpreter called on Windows?</p></li>
+<li class="calibre15"><p class="number"><a href="#calibre_link-821" id="calibre_link-1955" class="calibre6">8</a>. What does the <span class="literal">pwd</span> command do?</p></li>
+<li class="calibre15"><p class="number"><a href="#calibre_link-822" id="calibre_link-1956" class="calibre6">9</a>. How can you find out what the current working directory is on Windows?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-823" id="calibre_link-1957" class="calibre6">10</a>. What commands display the contents of the current working directory on Windows, macOS, and Linux?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-824" id="calibre_link-1958" class="calibre6">11</a>. How do you display all the executable files in the current working directory on Windows?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-825" id="calibre_link-1959" class="calibre6">12</a>. How do you display all the executable files in the current working directory on macOS and Linux?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-826" id="calibre_link-1960" class="calibre6">13</a>. What command do you enter if you want to open <i class="calibre5">example.txt</i> with the default text editor app on Windows?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-827" id="calibre_link-1961" class="calibre6">14</a>. What command do you enter if you want to open <i class="calibre5">example.txt</i> with the default text editor app on macOS?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-828" id="calibre_link-1962" class="calibre6">15</a>. <span role="doc-pagebreak" id="calibre_link-2685" aria-label="83"></span>Say you have a program named <i class="calibre5">eggs</i> or <i class="calibre5">eggs.exe</i> in the current working directory. What command do you enter if you want to run this program on Windows, macOS, and Linux?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-829" id="calibre_link-1963" class="calibre6">16</a>. If the <i class="calibre5">eggs</i> program isn’t in the current working directory, what happens when you run <span class="literal">eggs</span> in the terminal?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-830" id="calibre_link-1964" class="calibre6">17</a>. How can you show the contents of the <span class="literal">PATH</span> environment variable on Windows, macOS, and Linux?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-831" id="calibre_link-1965" class="calibre6">18</a>. What character separates the folder names in the <span class="literal">PATH</span> environment variable on Windows, macOS, and Linux?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-832" id="calibre_link-1966" class="calibre6">19</a>. If <i class="calibre5">C:\Users\al\Scripts</i> is the current working directory and the only folder name in the <span class="literal">PATH</span> environment variable, would entering <i class="calibre5">spam.exe</i> into the terminal run the program at <i class="calibre5">C:\Users\al\Scripts\subfolder\spam.exe</i>?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-833" id="calibre_link-1967" class="calibre6">20</a>. What file do you edit on macOS to edit the <span class="literal">PATH</span> environment variable?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-834" id="calibre_link-1968" class="calibre6">21</a>. What file do you edit on Linux to edit the <span class="literal">PATH</span> environment variable?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-835" id="calibre_link-1969" class="calibre6">22</a>. What commands (on Windows and on macOS/Linux) would tell you the folder location of a program named <i class="calibre5">abcd</i> if you entered <span class="literal">abcd</span> in the terminal?</p></li>
+</ol>
+</section>
+<section>
+<h3 id="calibre_link-154" type="title" class="h1">Virtual Environments</h3>
+<p class="noindent">Virtual environments are separate installations of Python that have their own sets of installed third-party packages. In general, each Python application you create needs its own virtual environment. This prevents Python programs that require different versions of packages from conflicting with each other.</p>
+<ol class="order">
+<li class="calibre15"><p class="number1"><a href="#calibre_link-836" id="calibre_link-1970" class="calibre6">23</a>. Can Python have multiple versions of the same package installed at the same time?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-837" id="calibre_link-1971" class="calibre6">24</a>. What built-in Python module creates virtual environments?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-838" id="calibre_link-1972" class="calibre6">25</a>. What is the name commonly used for virtual environment folders?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-839" id="calibre_link-1973" class="calibre6">26</a>. Once you’ve activated a virtual environment, what command can you run to make sure that running <span class="literal">python3</span> or <span class="literal">python</span> accesses the virtual environment’s Python interpreter and not the system’s Python interpreter?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-840" id="calibre_link-1974" class="calibre6">27</a>. What command shows you all of the third-party packages currently installed?</p></li>
+</ol>
+</section>
+<section>
+<h3 id="calibre_link-155" type="title" class="h1"><span role="doc-pagebreak" id="calibre_link-2686" aria-label="84" class="calibre1"></span>Installing Python Packages with pip</h3>
+<p class="noindent">While Python’s standard library comes with modules such as <span class="literal">sys</span>, <span class="literal">random</span>, and <span class="literal">os</span>, there are also hundreds of thousands of third-party packages you can find on the Python Package Index (PyPI) at <i class="calibre5"><a href="https://pypi.org" class="calibre6">https://pypi.org</a></i>. In Python, a <i class="calibre5">package</i> is a collection of Python code made available on PyPI, and a <i class="calibre5">module</i> is an individual <i class="calibre5">.py</i> file containing Python code. You install packages from PyPI that contain modules, and you import modules with an <span class="literal">import</span> statement.</p>
+<ol class="order">
+<li class="calibre15"><p class="number1"><a href="#calibre_link-841" id="calibre_link-1975" class="calibre6">28</a>. What program on Windows, macOS, and Linux installs third-party Python packages?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-842" id="calibre_link-1976" class="calibre6">29</a>. Where are third-party Python packages downloaded from?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-843" id="calibre_link-1977" class="calibre6">30</a>. What does the command <span class="literal">pip install automateboringstuff3</span> do? What is <span class="literal">automateboringstuff3</span>?</p></li>
+</ol>
+</section>
+<section>
+<h3 id="calibre_link-156" type="title" class="h1">Self-Aware Python Programs</h3>
+<p class="noindent">Several built-in variables can give your Python program useful information about itself, the operating system it’s on, and the Python interpreter running it. Answer the following questions about Python functions that hold information about the Python program and interpreter.</p>
+<ol class="order">
+<li class="calibre15"><p class="number1"><a href="#calibre_link-844" id="calibre_link-1978" class="calibre6">31</a>. What is in the <span class="literal">__file__</span> variable?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-845" id="calibre_link-1979" class="calibre6">32</a>. What happens if you enter <span class="literal">__file__</span> into the interactive shell?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-846" id="calibre_link-1980" class="calibre6">33</a>. What variable holds the filepath of the Python interpreter program?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-847" id="calibre_link-1981" class="calibre6">34</a>. What is the data type of <span class="literal">sys.version</span>?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-848" id="calibre_link-1982" class="calibre6">35</a>. What is the data type of <span class="literal">sys.version_info.major</span> and <span class="literal">sys.version_info.minor</span>?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-849" id="calibre_link-1983" class="calibre6">36</a>. Write an <span class="literal">if</span> statement that checks whether the Python program is being run by version 3 or later of the Python interpreter.</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-850" id="calibre_link-1984" class="calibre6">37</a>. What does the <span class="literal">sys.platform</span> variable contain when the Python program is run on Windows, macOS, and Linux?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-851" id="calibre_link-1985" class="calibre6">38</a>. What exception is raised if you try to import a module that isn’t installed?</p></li>
+</ol>
+</section>
+<section>
+<h3 id="calibre_link-157" type="title" class="h1">Text-Based Program Design</h3>
+<p class="noindent">Even when limited to text, software applications can still provide a user interface similar to modern GUIs. These kinds of applications are called <i class="calibre5">text-based user interface</i> <i class="calibre5">(TUI)</i> applications, and they’re simpler to develop than GUI applications. Answer the following questions about making programs that run in the command line terminal.</p>
+<ol class="order">
+<li class="calibre15"><p class="number1"><a href="#calibre_link-852" id="calibre_link-1986" class="calibre6">39</a>. <span role="doc-pagebreak" id="calibre_link-2687" aria-label="85"></span>Why should commands have short names when variables should have long, descriptive names?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-853" id="calibre_link-1987" class="calibre6">40</a>. If <span class="literal">python3 yourScript.py download confirm</span> is run from the terminal, what does <span class="literal">sys.argv</span> contain?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-854" id="calibre_link-1988" class="calibre6">41</a>. If <span class="literal">python3 yourScript.py download_confirm</span> is run from the terminal, what does <span class="literal">sys.argv</span> contain?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-855" id="calibre_link-1989" class="calibre6">42</a>. Does the order of command line arguments matter?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-856" id="calibre_link-1990" class="calibre6">43</a>. What <span class="literal">pyperclip</span> function returns the text that is currently on the clipboard?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-857" id="calibre_link-1991" class="calibre6">44</a>. What <span class="literal">pyperclip</span> function puts text on the clipboard?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-858" id="calibre_link-1992" class="calibre6">45</a>. What is the command to clear the terminal window of text on macOS and Linux?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-859" id="calibre_link-1993" class="calibre6">46</a>. What is the command to clear the terminal window of text on Windows?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-860" id="calibre_link-1994" class="calibre6">47</a>. Write the code to play the audio in a file named <i class="calibre5">hello.mp3</i> using the <span class="literal">playsound</span> module.</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-861" id="calibre_link-1995" class="calibre6">48</a>. What does it mean to say a function call blocks until it’s finished?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-862" id="calibre_link-1996" class="calibre6">49</a>. What do the terms <i class="calibre5">quiet mode</i> and <i class="calibre5">verbose mode</i> mean for commands?</p></li>
+</ol>
+</section>
+<section>
+<h3 id="calibre_link-158" type="title" class="h1">Pop-Up Message Boxes with PyMsgBox</h3>
+<p class="noindent">You can add small GUI message boxes to your program with the third-party PyMsgBox package. PyMsgBox lets you create dialogs using Tkinter, which comes with Python on Windows and macOS. On Ubuntu Linux, you must first install Tkinter by running <span class="literal">sudo apt install python3-tk</span> in the terminal. The PyMsgBox functions follow the names of message box functions in JavaScript: <span class="literal">alert()</span>, <span class="literal">confirm()</span>, <span class="literal">prompt()</span>, and <span class="literal">password()</span>.</p>
+<ol class="order">
+<li class="calibre15"><p class="number1"><a href="#calibre_link-863" id="calibre_link-1997" class="calibre6">50</a>. Do the dialog boxes that PyMsgBox create appear in the terminal window?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-864" id="calibre_link-1998" class="calibre6">51</a>. What two PyMsgBox functions allow the user to enter text into a dialog box?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-865" id="calibre_link-1999" class="calibre6">52</a>. What PyMsgBox function displays a text message in a dialog box to the user?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-866" id="calibre_link-2000" class="calibre6">53</a>. What PyMsgBox function presents the user with OK and Cancel buttons?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-867" id="calibre_link-2001" class="calibre6">54</a>. Can you create an entire program that uses PyMsgBox functions instead of <span class="literal">print()</span> and <span class="literal">input()</span>?</p></li>
+</ol>
+</section>
+<section>
+<h3 id="calibre_link-159" type="title" class="h1"><span role="doc-pagebreak" id="calibre_link-2688" aria-label="86" class="calibre1"></span>Deploying Python Programs</h3>
+<p class="noindent">You can deploy your Python program so that you can run it in as few keystrokes as possible. First, you’ll need to add your program’s folder to the <span class="literal">PATH</span> environment variable. Answer the following questions about setting up your Python programs.</p>
+<ol class="order">
+<li class="calibre15"><p class="number1"><a href="#calibre_link-868" id="calibre_link-2002" class="calibre6">55</a>. What operating system uses batch files?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-869" id="calibre_link-2003" class="calibre6">56</a>. What does the Windows <span class="literal">pause</span> command do?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-870" id="calibre_link-2004" class="calibre6">57</a>. What operating system uses <i class="calibre5">.command</i> files?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-871" id="calibre_link-2005" class="calibre6">58</a>. What does the <span class="literal">chmod u+x yourScript</span> command do?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-872" id="calibre_link-2006" class="calibre6">59</a>. Should the batch file, command file, or shell script you create to run your program automatically activate a virtual environment before running the Python interpreter?</p></li>
+</ol>
+</section>
+<section>
+<h3 id="calibre_link-160" type="title" class="h1">Compiling Python Programs with PyInstaller</h3>
+<p class="noindent">It’s possible to create executable programs from Python code with the PyInstaller package, which generates executable programs you can run from the command line. PyInstaller doesn’t compile Python programs into machine code, per se; rather, it creates an executable program that contains a copy of the Python interpreter and your script. The benefit of compiling your Python program is that you can share your program with others who don’t have Python installed.</p>
+<ol class="order">
+<li class="calibre15"><p class="number1"><a href="#calibre_link-873" id="calibre_link-2007" class="calibre6">60</a>. Are Python programs mostly compiled, or mostly run by interpreters?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-874" id="calibre_link-2008" class="calibre6">61</a>. What is the benefit of compiling a Python program?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-875" id="calibre_link-2009" class="calibre6">62</a>. What terminal command would run PyInstaller to compile a program named <i class="calibre5">yourScript.py</i>?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-876" id="calibre_link-2010" class="calibre6">63</a>. PyInstaller creates two folders named <i class="calibre5">build</i> and <i class="calibre5">dist</i> when it compiles a program. Which folder contains the compiled program?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-877" id="calibre_link-2011" class="calibre6">64</a>. Can you run PyInstaller on one operating system to produce compiled programs for another operating system?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-878" id="calibre_link-2012" class="calibre6">65</a>. How large are the smallest compiled Python programs: several kilobytes, several megabytes, or several gigabytes?</p></li>
+</ol>
+</section>
+</section>
+<section>
+<h2 id="calibre_link-161" type="title" class="h"><span role="doc-pagebreak" id="calibre_link-2689" aria-label="87" class="calibre1"></span><img class="inline" src="../assets/inventwithpython.com/automate3workbook/images/000002.jpg" alt="A simple drawing of a sharpened pencil." /> Practice Projects</h2>
+<p class="noindent">The following projects will give you a chance to practice designing and deploying programs.</p>
+<section>
+<h3 id="calibre_link-162" type="title" class="h1">Guess the Number with PyMsgBox</h3>
+<p class="noindent">Create a dialog-based GUI for the Guess the Number game from <a href="#calibre_link-11" class="calibre6">Chapter 3</a> of <i class="calibre5">Automate the Boring Stuff with Python</i>. Copy the source code from the book (which you can find in the downloadable content at <i class="calibre5"><a href="https://nostarch.com/automate-boring-stuff-python-3rd-edition" class="calibre6">https://nostarch.com/automate-boring-stuff-python-3rd-edition</a></i>) and replace the <span class="literal">print()</span> and <span class="literal">input()</span> calls with calls to <span class="literal">pymsgbox.alert()</span> and <span class="literal">pymsgbox.prompt()</span>. When you run this program, the terminal window won’t show any text; instead, a series of dialog boxes will handle displaying output and accepting keyboard input.</p>
+<p class="indent">Save this program in a file named <i class="calibre5">msgBoxGuess.py</i>.</p>
+</section>
+<section>
+<h3 id="calibre_link-163" type="title" class="h1">Timer with PyMsgBox</h3>
+<p class="noindent">Create a dialog-based GUI for a simple timer program. Instead of making <span class="literal">print()</span> and <span class="literal">input()</span> calls, your program should call <span class="literal">pymsgbox.alert()</span> and <span class="literal">pymsgbox.prompt()</span>. Have the program ask the user how many seconds the program should pause for. Then, after that amount of time has passed, display an alert message box that says, “Time’s up!”</p>
+<p class="indent">Save this program in a file named <i class="calibre5">msgBoxTimer.py</i>.</p>
+</section>
+<section>
+<h3 id="calibre_link-164" type="title" class="h1">Compiling the Timer and Guess the Number Programs</h3>
+<p class="noindent">Use the PyInstaller package to create an executable program for the <i class="calibre5">msgBoxGuess.py</i> and <i class="calibre5">msgBoxTimer.py</i> programs from the previous two practice projects. You should be able to run the resulting executables on other computers without having Python installed. Record the terminal command you used to instruct PyInstaller to generate these programs as a single file.<span role="doc-pagebreak" id="calibre_link-2690" aria-label="88"></span></p>
+</section>
+</section>
+</section>
+</div>
+
+
+
+
+
+
+
+
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"8bd877e77db3400e83e36e899a2ab1fd","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+<style>.atbs-nav{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;justify-content:space-between;margin:1rem 0;padding:.7rem .8rem;border:1px solid #cfd8dc;border-radius:10px;background:#f6fbfd;font:14px/1.35 system-ui,-apple-system,sans-serif;}.atbs-nav-center{color:#455a64;font-weight:600;}.atbs-nav-link{text-decoration:none;color:#0b5b6b;background:#e6f3f7;border:1px solid #c7dfe7;border-radius:7px;padding:.42rem .55rem;display:inline-block;}.atbs-nav-link:hover{background:#d9edf3;}.atbs-nav-disabled{opacity:.55;cursor:not-allowed;}</style><nav class='atbs-nav' aria-label='Chapter pagination'><a class='atbs-nav-link' href='../book/chapter12.html' aria-label='Previous chapter'>&larr; Book Chapter 12</a><span class='atbs-nav-center'><a class='atbs-nav-link' href='../index.html'>Contents</a> Workbook Chapter 12</span><a class='atbs-nav-link' href='../book/chapter13.html' aria-label='Next chapter'>Book Chapter 13 &rarr;</a></nav></body></html>

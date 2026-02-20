@@ -1,0 +1,168 @@
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><link href="../assets/inventwithpython.com/automate3workbook/style.css" rel="stylesheet" type="text/css" /><title>Automate the Boring Stuff with Python Workbook: Projects and Exercises to Sharpen Your Python Skills</title></head><body><style>.atbs-nav{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;justify-content:space-between;margin:1rem 0;padding:.7rem .8rem;border:1px solid #cfd8dc;border-radius:10px;background:#f6fbfd;font:14px/1.35 system-ui,-apple-system,sans-serif;}.atbs-nav-center{color:#455a64;font-weight:600;}.atbs-nav-link{text-decoration:none;color:#0b5b6b;background:#e6f3f7;border:1px solid #c7dfe7;border-radius:7px;padding:.42rem .55rem;display:inline-block;}.atbs-nav-link:hover{background:#d9edf3;}.atbs-nav-disabled{opacity:.55;cursor:not-allowed;}</style><nav class='atbs-nav' aria-label='Chapter pagination'><a class='atbs-nav-link' href='../book/chapter24.html' aria-label='Previous chapter'>&larr; Book Chapter 24</a><span class='atbs-nav-center'><a class='atbs-nav-link' href='../index.html'>Contents</a> Workbook Chapter 24</span><a class='atbs-nav-link' href='../book/appendixa.html' aria-label='Next chapter'>Book Appendix A &rarr;</a></nav>
+
+
+
+
+
+
+<div class="calibre" id="calibre_link-32">
+<section type="chapter" role="doc-chapter" aria-labelledby="ch24">
+<h1 id="calibre_link-2785" type="title" class="h1ch"><span role="doc-pagebreak" id="calibre_link-2786" aria-label="161" class="calibre1"></span><span class="big">24</span><span class="break1"></span>TEXT-TO-SPEECH AND SPEECH RECOGNITION ENGINES</h1>
+<p class="noindent-c">Python’s powerful libraries for working with audio enable you to automate tasks involving both text-to-speech and speech recognition. Using the pyttsx3 package, your programs can convert text into the spoken word and generate audio files. By contrast, the Whisper speech recognition package can transcribe spoken language from audio files into text strings.</p>
+<aside type="sidebar" class="sidebar" aria-labelledby="side24" role="doc-example">
+<section>
+<h2 type="title" class="stitle" id="calibre_link-2787"><img class="inline" src="../assets/inventwithpython.com/automate3workbook/images/000000.jpg" alt="A simple drawing of a light bulb." /> LEARNING OBJECTIVES</h2>
+<ul class="b-bullet">
+<li class="bull">Produce audio files of spoken speech based on arbitrary string values or text files.</li>
+<li class="bull">Know the settings and limitations of pyttsx3’s text-to-speech capabilities.</li>
+<li class="bull">Install Whisper and perform speech recognition on your local computer with Whisper’s different training models.</li>
+<li class="bull">Create subtitles from audio and video files with timestamps that match the words spoken.</li>
+<li class="bull">Download video files from YouTube and other video websites with the yt-dlp package.</li>
+</ul>
+</section>
+</aside>
+<section>
+<h2 id="calibre_link-273" type="title" class="h"><span role="doc-pagebreak" id="calibre_link-2788" aria-label="162" class="calibre1"></span><img class="inline" src="../assets/inventwithpython.com/automate3workbook/images/000005.jpg" alt="A grey circle with a white question mark at the center" /> Practice Questions</h2>
+<p class="noindent">The following questions test your ability to work with the pyttsx3 and Whisper packages to automate tasks like generating audio feedback, transcribing voice memos, or integrating speech capabilities into your Python projects.</p>
+<section>
+<h3 id="calibre_link-274" type="title" class="h1">Text-to-Speech Engine</h3>
+<p class="noindent">Producing a computerized voice is a complex topic in computer science, so the pyttsx3 third-party package uses your operating system’s built-in text-to-speech engine: Microsoft Speech API (SAPI5) on Windows, NSSpeechSynthesizer on macOS, and eSpeak on Linux.</p>
+<ol class="order">
+<li class="calibre15"><p class="number"><a href="#calibre_link-1380" id="calibre_link-2511" class="calibre6">1</a>. What does the <i class="calibre5">tts</i> in <i class="calibre5">pyttsx3</i> stand for?</p></li>
+<li class="calibre15"><p class="number"><a href="#calibre_link-1381" id="calibre_link-2512" class="calibre6">2</a>. Does pyttsx3 require an online service to work?</p></li>
+<li class="calibre15"><p class="number"><a href="#calibre_link-1382" id="calibre_link-2513" class="calibre6">3</a>. How does pyttsx3 produce speech on Windows, macOS, and Linux?</p></li>
+<li class="calibre15"><p class="number"><a href="#calibre_link-1383" id="calibre_link-2514" class="calibre6">4</a>. After you’ve imported the <span class="literal">pyttsx3</span> module, how do you initialize the text-to-speech engine?</p></li>
+<li class="calibre15"><p class="number"><a href="#calibre_link-1384" id="calibre_link-2515" class="calibre6">5</a>. If you call <span class="literal">engine.say('Hello. How are you doing?')</span>, does the computer say anything?</p></li>
+<li class="calibre15"><p class="number"><a href="#calibre_link-1385" id="calibre_link-2516" class="calibre6">6</a>. In what audio file format does pyttsx3 save its audio?</p></li>
+<li class="calibre15"><p class="number"><a href="#calibre_link-1386" id="calibre_link-2517" class="calibre6">7</a>. What are the three properties that pyttsx3 makes available?</p></li>
+<li class="calibre15"><p class="number"><a href="#calibre_link-1387" id="calibre_link-2518" class="calibre6">8</a>. What does <span class="literal">engine.setProperty('rate', 300)</span> do?</p></li>
+<li class="calibre15"><p class="number"><a href="#calibre_link-1388" id="calibre_link-2519" class="calibre6">9</a>. What does <span class="literal">engine.setProperty('volume', 2.0)</span> do?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1389" id="calibre_link-2520" class="calibre6">10</a>. Write code that could save the audio of “Is it raining today?” to an audio file named <i class="calibre5">raining.wav</i>. (You can ignore the required <span class="literal">runAndWait()</span> call.)</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1390" id="calibre_link-2521" class="calibre6">11</a>. What code creates a <i class="calibre5">hello.wav</i> file of “Hello. How are you doing?” (You can ignore the required <span class="literal">runAndWait()</span> call.)</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1391" id="calibre_link-2522" class="calibre6">12</a>. Does the voice that speaks your text sound the same across Windows, macOS, and Linux?</p></li>
+</ol>
+</section>
+<section>
+<h3 id="calibre_link-275" type="title" class="h1">Speech Recognition</h3>
+<p class="noindent">Whisper is a speech recognition system that can recognize multiple languages. Given an audio or video file, Whisper can return the speech as text in a Python string. It also returns the start and end times for groups of words, which you can use to generate subtitle files.</p>
+<ol class="order">
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1392" id="calibre_link-2523" class="calibre6">13</a>. What is the correct package name to use when installing Whisper with the pip tool?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1393" id="calibre_link-2524" class="calibre6">14</a>. What function must you call after importing the <span class="literal">whisper</span> module but before supplying the audio filename to transcribe?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1394" id="calibre_link-2525" class="calibre6">15</a>. What are the string values of the five models that Whisper provides?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1395" id="calibre_link-2526" class="calibre6">16</a>. <span role="doc-pagebreak" id="calibre_link-2789" aria-label="163"></span>Between the tiny model and the large-v3 model, which uses less of the computer’s memory?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1396" id="calibre_link-2527" class="calibre6">17</a>. Between the tiny model and the large-v3 model, which transcribes audio more quickly?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1397" id="calibre_link-2528" class="calibre6">18</a>. Between the tiny model and the large-v3 model, which transcribes audio more accurately?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1398" id="calibre_link-2529" class="calibre6">19</a>. What is the recommended model to use for most transcriptions?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1399" id="calibre_link-2530" class="calibre6">20</a>. Write code that transcribes the English speech in an audio file named <i class="calibre5">input.mp3</i>. (Assume you’ve imported Whisper and loaded a model.)</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1400" id="calibre_link-2531" class="calibre6">21</a>. Write code that transcribes the Spanish speech in an audio file named <i class="calibre5">input.mp3</i>. (Assume you’ve imported Whisper and loaded a model.)</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1401" id="calibre_link-2532" class="calibre6">22</a>. Does Whisper insert punctuation into the text it transcribes?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1402" id="calibre_link-2533" class="calibre6">23</a>. What two subtitle text file formats does Whisper produce? What are their file extensions?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1403" id="calibre_link-2534" class="calibre6">24</a>. Say that the dictionary returned by <span class="literal">model.transcribe()</span> is stored in a variable named <span class="literal">result</span>. What two lines of code would write a subtitle file named <i class="calibre5">podcast.srt</i> to the current working directory?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1404" id="calibre_link-2535" class="calibre6">25</a>. If your computer has an Intel or Apple brand of GPU, can you make Whisper use the GPU to do speech recognition?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1405" id="calibre_link-2536" class="calibre6">26</a>. What code loads the “base” model and uses the GPU to perform speech recognition?</p></li>
+</ol>
+</section>
+<section>
+<h3 id="calibre_link-276" type="title" class="h1">Creating Subtitle Files</h3>
+<p class="noindent">In addition to the transcribed audio, Whisper’s results dictionary contains timing information that identifies the text’s location in the audio file. You can use this text and timing data to generate subtitle files that other software can ingest.</p>
+<ol class="order">
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1406" id="calibre_link-2537" class="calibre6">27</a>. The <i class="calibre5">.srt</i> and <i class="calibre5">.vtt</i> files produced by Whisper are plaintext file formats. What information do these files contain?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1407" id="calibre_link-2538" class="calibre6">28</a>. What does <i class="calibre5">SRT</i> stand for?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1408" id="calibre_link-2539" class="calibre6">29</a>. What does <i class="calibre5">VTT</i> stand for?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1409" id="calibre_link-2540" class="calibre6">30</a>. In addition to <i class="calibre5">.srt</i> and <i class="calibre5">.vtt</i> files, what other kinds of files is Whisper capable of producing?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1410" id="calibre_link-2541" class="calibre6">31</a>. Say the variable <span class="literal">result</span> contains the value returned from <span class="literal">model</span><span class="literal">.transcribe('audio.wav')</span>. What code produces a subtitle file named <i class="calibre5">subtitles.srt</i>?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1411" id="calibre_link-2542" class="calibre6">32</a>. What are the column headings in the TSV-formatted subtitles that Whisper produces?</p></li>
+</ol>
+</section>
+<section>
+<h3 id="calibre_link-277" type="title" class="h1"><span role="doc-pagebreak" id="calibre_link-2790" aria-label="164" class="calibre1"></span>Downloading Videos from Websites</h3>
+<p class="noindent">Video websites such as YouTube often don’t make it easy to download their content. The <span class="literal">yt-dlp</span> module allows Python scripts to download videos from YouTube and hundreds of other video websites so that you can watch them offline.</p>
+<ol class="order">
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1412" id="calibre_link-2543" class="calibre6">33</a>. What is the module name of the yt-dlp package you must use in <span class="literal">import</span> statements? (It’s not “yt-dlp.”)</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1413" id="calibre_link-2544" class="calibre6">34</a>. Write the Python code to download the video at <i class="calibre5"><a href="https://www.youtube.com/watch?v=kSrnLbioN6w" class="calibre6">https://www.youtube.com/watch?v=kSrnLbioN6w</a></i>.</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1414" id="calibre_link-2545" class="calibre6">35</a>. How is the filename of the downloaded video selected by default?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1415" id="calibre_link-2546" class="calibre6">36</a>. What kind of data does a <i class="calibre5">.m4a</i> file contain?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1416" id="calibre_link-2547" class="calibre6">37</a>. What method returns a video’s title, duration, channel name, and other metadata?</p></li>
+</ol>
+</section>
+</section>
+<section>
+<h2 id="calibre_link-278" type="title" class="h"><img class="inline" src="../assets/inventwithpython.com/automate3workbook/images/000002.jpg" alt="A simple drawing of a sharpened pencil." /> Practice Projects</h2>
+<p class="noindent">Write knock-knock jokes, make your computer sing, and create a word search for podcasts.</p>
+<section>
+<h3 id="calibre_link-279" type="title" class="h1">Knock-Knock Jokes</h3>
+<p class="noindent">Write a program that uses pyttsx3 to tell a knock-knock joke using two different voices. Here’s an example joke you could use:</p>
+<p class="indentt">VOICE 1: “Knock knock.”</p>
+<p class="indent">VOICE 2: “Who’s there?”</p>
+<p class="indent">VOICE 1: “Lettuce.”</p>
+<p class="indent">VOICE 2: “Lettuce who?”</p>
+<p class="indent">VOICE 1: “Lettuce in, it’s cold out here!”</p>
+<p class="indentt">You’ll need to set the <span class="literal">'voice'</span> property before calling <span class="literal">say()</span> and <span class="literal">runAndWait()</span> for each line of the joke.</p>
+<p class="indent">Save this program in a file named <i class="calibre5">sayKnockKnock.py</i>.</p>
+</section>
+<section>
+<h3 id="calibre_link-280" type="title" class="h1">12 Days of Christmas</h3>
+<p class="noindent">While a text-to-speech package like pyttsx3 can make your computer talk, it can’t make your computer sing. We’ll forgive that deficiency for this project, though.</p>
+<p class="indent">Write a program that sings the carol “The 12 Days of Christmas.” This is an example of a cumulative song; the first verse is “On the first day of Christmas, my true love gave to me a partridge in a pear tree.” The second verse builds on top of this: “On the second day of Christmas, my true love gave to me two turtle doves and a partridge in a pear tree.”</p>
+<p class="indent">This pattern continues for 12 days. In total, the song comprises 90 lines, but your program can be much shorter. Rather than typing the song’s full <span role="doc-pagebreak" id="calibre_link-2791" aria-label="165"></span>lyrics, you should generate the verses with code. Use the following lists in your program:</p>
+<pre class="pre">days = ['first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh',
+'eighth', 'ninth', 'tenth', 'eleventh', 'twelfth']
+
+verses = ['And a partridge in a pear tree.', 'Two turtle doves,',
+'Three French hens,', 'Four calling birds,', 'Five gold rings,',
+'Six geese a-laying,', 'Seven swans a-swimming,', 'Eight maids a-milking,',
+'Nine ladies dancing,', 'Ten lords a-leaping,', 'Eleven pipers piping,',
+'Twelve drummers drumming,']</pre>
+<p class="indent">Your program should both print the verses to the screen and then make pyttsx3 speak them out loud. Place a <span class="literal">time.sleep(2)</span> call at the end of each day’s verses to pause the program before it continues to the next day.</p>
+<p class="indent">Note that the first day’s verse is “A partridge in a pear tree,” while the subsequent days use “And a partridge in a pear tree.” Feel free to hardcode the verse for the first day and then automatically generate the verses beginning on the second day.</p>
+</section>
+<section>
+<h3 id="calibre_link-281" type="title" class="h1">Podcast Word Search</h3>
+<p class="noindent">Say you want to find every instance of a particular word being spoken in a podcast. Podcasts can be over an hour long, and this task would require you to listen to the full thing. You could play the podcast at double speed to make the process faster, but you might miss occurrences of the word you’re searching for.</p>
+<p class="indent">The <span class="literal">srt</span> module available at <i class="calibre5"><a href="https://pypi.org/project/srt/" class="calibre6">https://pypi.org/project/srt/</a></i> can parse SRT files. Review this module’s documentation, then install it. Next, create a function named <span class="literal">find_in_audio(audio_filename, search_word)</span> that takes two string arguments: the podcast filename and the word to search for in that podcast.</p>
+<p class="indent">The function should use Whisper to create a <i class="calibre5">.srt</i> subtitle file of the words in the podcast audio file. Then, the function should use the <span class="literal">srt</span> module to parse the subtitle objects and locate instances of the search word argument. For example, the following function call would find every instance of the word <i class="calibre5">amino</i> spoken in an audio file named <i class="calibre5">DNA_lecture.mp3</i>:</p>
+<pre class="pre">find_in_audio('DNA_lecture.mp3', 'amino')</pre>
+<p class="indent">The function should return a list of starting timestamps for each instance. The <span class="literal">srt</span> module uses <span class="literal">timedelta</span> objects for these timestamps, but your function should convert them to strings before putting them in the returned list. For example, if the word <i class="calibre5">amino</i> is spoken six times in the audio file, the return value could look something like this:</p>
+<pre class="pre">['0:00:37.792000', '0:00:42.332000', '0:01:37.389000', '0:02:45.497000',
+'0:05:55.576000', '0:07:41.252000']</pre>
+<p class="indent">Because transcribing the audio and creating the subtitle file is the computationally expensive part of this function, have your function check whether this file already exists before transcribing the audio file. If it already exists, skip the transcription and simply search this subtitle file. Give the <i class="calibre5">.srt</i> <span role="doc-pagebreak" id="calibre_link-2792" aria-label="166"></span>file the same name as the audio file. For example, passing the argument <span class="literal">'DNA_lecture.mp3'</span> should create a subtitle file named <i class="calibre5">DNA_lecture.srt</i>.</p>
+<p class="indent">Here is a template for a possible solution, if you wish to use it:</p>
+<pre class="pre">import whisper, srt, os
+
+def find_in_audio(audio_filename, search_word):
+&nbsp;&nbsp;&nbsp;&nbsp;# Convert search_word to lowercase for case-insensitive matching:
+&nbsp;&nbsp;&nbsp;&nbsp;# INSERT CODE HERE.
+&nbsp;&nbsp;&nbsp;&nbsp;# Check if the subtitle file already exists:
+&nbsp;&nbsp;&nbsp;&nbsp;if not os.path.exists(audio_filename[:-4] + '.srt'):
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Transcribe the audio file:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# INSERT CODE HERE.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Create the subtitle file:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# INSERT CODE HERE.
+
+&nbsp;&nbsp;&nbsp;&nbsp;# Read in the text contents of the subtitle file:
+&nbsp;&nbsp;&nbsp;&nbsp;with open(audio_filename[:-4] + '.srt', encoding='utf-8') as file_obj:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# INSERT CODE HERE.
+
+&nbsp;&nbsp;&nbsp;&nbsp;# Go through each subtitle and collect timestamps of matches:
+&nbsp;&nbsp;&nbsp;&nbsp;found_timestamps = []
+&nbsp;&nbsp;&nbsp;&nbsp;for subtitle in srt.parse(content):
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if search_word in subtitle.content.lower():
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# INSERT CODE HERE.
+
+&nbsp;&nbsp;&nbsp;&nbsp;# Return the list of timestamps:
+&nbsp;&nbsp;&nbsp;&nbsp;# INSERT CODE HERE.
+
+print(find_in_audio('DNA_lecture.mp3', 'amino'))</pre>
+<p class="indent">You can download an example audio file from <i class="calibre5"><a href="https://autbor.com/DNA_lecture.mp3" class="calibre6">https://autbor.com/DNA_lecture.mp3</a></i> or use your own.</p>
+</section>
+</section>
+</section>
+</div>
+
+
+
+
+
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"8bd877e77db3400e83e36e899a2ab1fd","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+<style>.atbs-nav{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;justify-content:space-between;margin:1rem 0;padding:.7rem .8rem;border:1px solid #cfd8dc;border-radius:10px;background:#f6fbfd;font:14px/1.35 system-ui,-apple-system,sans-serif;}.atbs-nav-center{color:#455a64;font-weight:600;}.atbs-nav-link{text-decoration:none;color:#0b5b6b;background:#e6f3f7;border:1px solid #c7dfe7;border-radius:7px;padding:.42rem .55rem;display:inline-block;}.atbs-nav-link:hover{background:#d9edf3;}.atbs-nav-disabled{opacity:.55;cursor:not-allowed;}</style><nav class='atbs-nav' aria-label='Chapter pagination'><a class='atbs-nav-link' href='../book/chapter24.html' aria-label='Previous chapter'>&larr; Book Chapter 24</a><span class='atbs-nav-center'><a class='atbs-nav-link' href='../index.html'>Contents</a> Workbook Chapter 24</span><a class='atbs-nav-link' href='../book/appendixa.html' aria-label='Next chapter'>Book Appendix A &rarr;</a></nav></body></html>

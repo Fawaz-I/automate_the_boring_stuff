@@ -1,0 +1,98 @@
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><link href="../assets/inventwithpython.com/automate3workbook/style.css" rel="stylesheet" type="text/css" /><title>Automate the Boring Stuff with Python Workbook: Projects and Exercises to Sharpen Your Python Skills</title></head><body><style>.atbs-nav{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;justify-content:space-between;margin:1rem 0;padding:.7rem .8rem;border:1px solid #cfd8dc;border-radius:10px;background:#f6fbfd;font:14px/1.35 system-ui,-apple-system,sans-serif;}.atbs-nav-center{color:#455a64;font-weight:600;}.atbs-nav-link{text-decoration:none;color:#0b5b6b;background:#e6f3f7;border:1px solid #c7dfe7;border-radius:7px;padding:.42rem .55rem;display:inline-block;}.atbs-nav-link:hover{background:#d9edf3;}.atbs-nav-disabled{opacity:.55;cursor:not-allowed;}</style><nav class='atbs-nav' aria-label='Chapter pagination'><a class='atbs-nav-link' href='../book/chapter20.html' aria-label='Previous chapter'>&larr; Book Chapter 20</a><span class='atbs-nav-center'><a class='atbs-nav-link' href='../index.html'>Contents</a> Workbook Chapter 20</span><a class='atbs-nav-link' href='../book/chapter21.html' aria-label='Next chapter'>Book Chapter 21 &rarr;</a></nav>
+
+
+
+
+
+
+<div class="calibre" id="calibre_link-28">
+<section type="chapter" role="doc-chapter" aria-labelledby="ch20">
+<h1 id="calibre_link-2753" type="title" class="h1ch"><span role="doc-pagebreak" id="calibre_link-2754" aria-label="137" class="calibre1"></span><span class="big">20</span><span class="break1"></span>SENDING EMAIL, TEXTS, AND PUSH NOTIFICATIONS</h1>
+<p class="noindent-c">At this point, you’ve written programs to work with strings and text pattern recognition, but you’ve been limited to accessing text data on your computer. You can also send text to other people through email, SMS, and push notifications. Python’s rich ecosystem of packages has third-party libraries for all of these features.</p>
+<aside type="sidebar" class="sidebar" aria-labelledby="side20" role="doc-example">
+<section>
+<h2 type="title" class="stitle" id="calibre_link-2755"><img class="inline" src="../assets/inventwithpython.com/automate3workbook/images/000000.jpg" alt="A simple drawing of a light bulb." /> LEARNING OBJECTIVES</h2>
+<ul class="b-bullet">
+<li class="bull">Be able to log in to your Gmail account using Python to search, read, and send email.</li>
+<li class="bull">Use code to make and download attachments to your email.</li>
+<li class="bull">Send SMS messages from Python scripts by using SMS email gateways, while understanding their limitations.</li>
+<li class="bull">Send and receive push notifications that you can view on your smartphone.</li>
+</ul>
+</section>
+</aside>
+<section>
+<h2 id="calibre_link-235" type="title" class="h"><span role="doc-pagebreak" id="calibre_link-2756" aria-label="138" class="calibre1"></span><img class="inline" src="../assets/inventwithpython.com/automate3workbook/images/000005.jpg" alt="A grey circle with a white question mark at the center" /> Practice Questions</h2>
+<p class="noindent">These questions test your understanding of the EZGmail package and ntfy service that your internet-connected computer can use to communicate across the globe.</p>
+<section>
+<h3 id="calibre_link-236" type="title" class="h1">The Gmail API</h3>
+<p class="noindent">Gmail owns close to one-third of the email client market share, and you’ve most likely had at least one Gmail email address. Because of Gmail’s additional security and antispam measures, controlling a Gmail account is best done through the <span class="literal">ezgmail</span> module rather than through the <span class="literal">smtplib</span> and <span class="literal">imaplib</span> modules in Python’s standard library.</p>
+<ol class="order">
+<li class="calibre15"><p class="number"><a href="#calibre_link-1202" id="calibre_link-2334" class="calibre6">1</a>. What should you do if you accidentally share the credentials or token files for the Gmail API?</p></li>
+<li class="calibre15"><p class="number"><a href="#calibre_link-1203" id="calibre_link-2335" class="calibre6">2</a>. What variable in the <span class="literal">ezgmail</span> module contains the email address from which you’re sending email?</p></li>
+<li class="calibre15"><p class="number"><a href="#calibre_link-1204" id="calibre_link-2336" class="calibre6">3</a>. What does this function call do: <span class="literal">ezgmail.send('<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="51303d383234113429303c213d347f323e3c">[email&#160;protected]</a>', 'Hello!', 'Here is that graduation photo.', ['grad.jpg'])</span>?</p></li>
+<li class="calibre15"><p class="number"><a href="#calibre_link-1205" id="calibre_link-2337" class="calibre6">4</a>. What data type represents a single received email?</p></li>
+<li class="calibre15"><p class="number"><a href="#calibre_link-1206" id="calibre_link-2338" class="calibre6">5</a>. What data type represents a series of back-and-forth emails?</p></li>
+<li class="calibre15"><p class="number"><a href="#calibre_link-1207" id="calibre_link-2339" class="calibre6">6</a>. Name two attributes of a <span class="literal">GmailMessage</span> object.</p></li>
+<li class="calibre15"><p class="number"><a href="#calibre_link-1208" id="calibre_link-2340" class="calibre6">7</a>. What function call returns the 50 most recent email threads?</p></li>
+<li class="calibre15"><p class="number"><a href="#calibre_link-1209" id="calibre_link-2341" class="calibre6">8</a>. What function call returns email messages that mention “cake recipes”?</p></li>
+<li class="calibre15"><p class="number"><a href="#calibre_link-1210" id="calibre_link-2342" class="calibre6">9</a>. What does <span class="literal">ezgmail.search('from:<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="27464b4e444267425f464a574b420944484a">[email&#160;protected]</a>')</span> return?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1211" id="calibre_link-2343" class="calibre6">10</a>. What does <span class="literal">ezgmail.summary(ezgmail.unread())</span> do?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1212" id="calibre_link-2344" class="calibre6">11</a>. If the variable <span class="literal">spam</span> contains a <span class="literal">GmailMessage</span> object, what code downloads all of the file attachments in that email?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1213" id="calibre_link-2345" class="calibre6">12</a>. What happens if you download an attachment that has the same filename as a file on your computer?</p></li>
+</ol>
+</section>
+<section>
+<h3 id="calibre_link-237" type="title" class="h1">SMS Email Gateways</h3>
+<p class="noindent">People are more likely to be near their smartphones than their computers, so text messages are often a more reliable way of sending immediate notifications than email. Also, text messages are usually shorter, making it more likely that a person will get around to reading them. The easiest, though not most reliable, way to send text messages is by using an <i class="calibre5">SMS email gateway</i>, an email server that a cell phone provider has set up to receive texts via email and then forward them to the recipient as text messages.</p>
+<ol class="order">
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1214" id="calibre_link-2346" class="calibre6">13</a>. <span role="doc-pagebreak" id="calibre_link-2757" aria-label="139"></span>What does <i class="calibre5">SMS</i> stand for?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1215" id="calibre_link-2347" class="calibre6">14</a>. What does <i class="calibre5">MMS</i> stand for?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1216" id="calibre_link-2348" class="calibre6">15</a>. Can your Python program send text messages by sending email to an SMS email gateway?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1217" id="calibre_link-2349" class="calibre6">16</a>. Can your Python program receive text messages by receiving email from an SMS email gateway?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1218" id="calibre_link-2350" class="calibre6">17</a>. What information besides the phone number do you need to send a text through an SMS email gateway?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1219" id="calibre_link-2351" class="calibre6">18</a>. How much do SMS email gateways cost to use?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1220" id="calibre_link-2352" class="calibre6">19</a>. What are two disadvantages of using SMS email gateways instead of a dedicated telecommunications API?</p></li>
+</ol>
+</section>
+<section>
+<h3 id="calibre_link-238" type="title" class="h1">Push Notifications</h3>
+<p class="noindent">HTTP pub-sub notification services allow you to send and receive short, disposable messages over the internet via HTTP web requests. Installing the ntfy app on your mobile phone allows you to receive these notifications. This open source app can be found in the app stores for Android and iPhone. You can also receive notifications in your web browser by going to <i class="calibre5"><a href="https://ntfy.sh/app" class="calibre6">https://ntfy.sh/app</a></i>. Your Python programs can send push notifications using the Requests package covered in <a href="#calibre_link-21" class="calibre6">Chapter 13</a> of this workbook.</p>
+<ol class="order">
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1221" id="calibre_link-2353" class="calibre6">20</a>. What module can you use for interacting with the ntfy service?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1222" id="calibre_link-2354" class="calibre6">21</a>. How can you receive ntfy notifications on your smartphone?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1223" id="calibre_link-2355" class="calibre6">22</a>. Can you receive ntfy notifications on your laptop without using Python?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1224" id="calibre_link-2356" class="calibre6">23</a>. What protocol does the ntfy service use to send and receive push notifications?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1225" id="calibre_link-2357" class="calibre6">24</a>. What function do you use to send a push notification to the ntfy service?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1226" id="calibre_link-2358" class="calibre6">25</a>. How much does it cost to use the ntfy service?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1227" id="calibre_link-2359" class="calibre6">26</a>. What are the lowest and highest priority levels for ntfy messages?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1228" id="calibre_link-2360" class="calibre6">27</a>. What does this code do: <span class="literal">requests.post('https://ntfy.sh/hello', 'goodbye')</span>?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1229" id="calibre_link-2361" class="calibre6">28</a>. What can keyword arguments for the <span class="literal">headers</span> parameter in <span class="literal">requests.post()</span> do?</p></li>
+</ol>
+</section>
+</section>
+<section>
+<h2 id="calibre_link-239" type="title" class="h"><span role="doc-pagebreak" id="calibre_link-2758" aria-label="140" class="calibre1"></span><img class="inline" src="../assets/inventwithpython.com/automate3workbook/images/000002.jpg" alt="A simple drawing of a sharpened pencil." /> Practice Projects</h2>
+<p class="noindent">Automate sending “quote of the day” messages with the following projects.</p>
+<section>
+<h3 id="calibre_link-240" type="title" class="h1">“Quote of the Day” Email</h3>
+<p class="noindent">Create a text file named <i class="calibre5">qotd.txt</i> that has one inspirational or memorable quote per line. Then, create a program that reads this file and randomly selects one quote to send in an email message. Place the recipient’s email address in a variable named <span class="literal">RECIPIENT</span>. The program should also print the email recipient and the quote sent, and maintain a text file named <i class="calibre5">qotdLastSent.txt</i> with the last date on which an email was sent.</p>
+<p class="indent">If it already sent an email today, the program should print “Email already sent today. Exiting . . .” and quit. You can get a string of the current date by calling <span class="literal">str(datetime.date.today())</span>.</p>
+<p class="indent">Save this program in a file named <i class="calibre5">qotdEmail.py</i>.</p>
+</section>
+<section>
+<h3 id="calibre_link-241" type="title" class="h1">“Quote of the Day” Push Notification</h3>
+<p class="noindent">This project is the same as the previous project, except it should send the quote as an ntfy notification. The <span class="literal">RECIPIENT</span> variable should be a string of the topic to which the quote was sent. Unlike with the email version, anyone listening to the ntfy topic can receive this message, so multiple people can enjoy the quote.</p>
+<p class="indent">Save this program in a file named <i class="calibre5">qotdPush.py</i>.</p>
+</section>
+</section>
+</section>
+</div>
+
+
+
+
+
+
+
+<script data-cfasync="false" src="../assets/inventwithpython.com/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"8bd877e77db3400e83e36e899a2ab1fd","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+<style>.atbs-nav{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;justify-content:space-between;margin:1rem 0;padding:.7rem .8rem;border:1px solid #cfd8dc;border-radius:10px;background:#f6fbfd;font:14px/1.35 system-ui,-apple-system,sans-serif;}.atbs-nav-center{color:#455a64;font-weight:600;}.atbs-nav-link{text-decoration:none;color:#0b5b6b;background:#e6f3f7;border:1px solid #c7dfe7;border-radius:7px;padding:.42rem .55rem;display:inline-block;}.atbs-nav-link:hover{background:#d9edf3;}.atbs-nav-disabled{opacity:.55;cursor:not-allowed;}</style><nav class='atbs-nav' aria-label='Chapter pagination'><a class='atbs-nav-link' href='../book/chapter20.html' aria-label='Previous chapter'>&larr; Book Chapter 20</a><span class='atbs-nav-center'><a class='atbs-nav-link' href='../index.html'>Contents</a> Workbook Chapter 20</span><a class='atbs-nav-link' href='../book/chapter21.html' aria-label='Next chapter'>Book Chapter 21 &rarr;</a></nav></body></html>

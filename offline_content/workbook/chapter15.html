@@ -1,0 +1,117 @@
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><link href="../assets/inventwithpython.com/automate3workbook/style.css" rel="stylesheet" type="text/css" /><title>Automate the Boring Stuff with Python Workbook: Projects and Exercises to Sharpen Your Python Skills</title></head><body><style>.atbs-nav{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;justify-content:space-between;margin:1rem 0;padding:.7rem .8rem;border:1px solid #cfd8dc;border-radius:10px;background:#f6fbfd;font:14px/1.35 system-ui,-apple-system,sans-serif;}.atbs-nav-center{color:#455a64;font-weight:600;}.atbs-nav-link{text-decoration:none;color:#0b5b6b;background:#e6f3f7;border:1px solid #c7dfe7;border-radius:7px;padding:.42rem .55rem;display:inline-block;}.atbs-nav-link:hover{background:#d9edf3;}.atbs-nav-disabled{opacity:.55;cursor:not-allowed;}</style><nav class='atbs-nav' aria-label='Chapter pagination'><a class='atbs-nav-link' href='../book/chapter15.html' aria-label='Previous chapter'>&larr; Book Chapter 15</a><span class='atbs-nav-center'><a class='atbs-nav-link' href='../index.html'>Contents</a> Workbook Chapter 15</span><a class='atbs-nav-link' href='../book/chapter16.html' aria-label='Next chapter'>Book Chapter 16 &rarr;</a></nav>
+
+
+
+
+
+<div class="calibre" id="calibre_link-23">
+<section type="chapter" role="doc-chapter" aria-labelledby="ch15">
+<h1 id="calibre_link-2711" type="title" class="h1ch"><span role="doc-pagebreak" id="calibre_link-2712" aria-label="105" class="calibre1"></span><span class="big">15</span><span class="break1"></span>GOOGLE SHEETS</h1>
+<p class="noindent-c">Google Sheets is a free, web-based spreadsheet application, and the EZSheets package offers a simplified form of its official API that enables your Python code to interact with online spreadsheets. Using EZSheets, you can download, create, read, and modify spreadsheets directly from your Python code.</p>
+<aside type="sidebar" class="sidebar" aria-labelledby="side15" role="doc-example">
+<section>
+<h2 type="title" class="stitle" id="calibre_link-2713"><img class="inline" src="../assets/inventwithpython.com/automate3workbook/images/000000.jpg" alt="A simple drawing of a light bulb." /> LEARNING OBJECTIVES</h2>
+<ul class="b-bullet">
+<li class="bull">Create authentication credentials the EZSheets package can use to access spreadsheets from your Google account.</li>
+<li class="bull">Know the difference between the online Google Sheets spreadsheets and offline Excel spreadsheet files.</li>
+<li class="bull">Read and update the data in your Google Sheets spreadsheets.</li>
+<li class="bull">Add, reorder, and remove individual sheets from a spreadsheet.</li>
+<li class="bull">Gather data from the public through Google Forms and retrieve the data with Google Sheets.</li>
+<li class="bull">Understand how the Google Sheets API works and limitations of account quotas.</li>
+</ul>
+</section>
+</aside>
+<section>
+<h2 id="calibre_link-188" type="title" class="h"><span role="doc-pagebreak" id="calibre_link-2714" aria-label="106" class="calibre1"></span><img class="inline" src="../assets/inventwithpython.com/automate3workbook/images/000005.jpg" alt="A grey circle with a white question mark at the center" /> Practice Questions</h2>
+<p class="noindent">These questions test your knowledge of EZSheets setup, reading and editing spreadsheets, and the structure of <span class="literal">Spreadsheet</span> and <span class="literal">Sheet</span> objects.</p>
+<section>
+<h3 id="calibre_link-189" type="title" class="h1">Installing and Setting Up EZSheets</h3>
+<p class="noindent">Before your Python scripts can use EZSheets to access and edit your Google Sheets spreadsheets, you need a credentials JSON file and two token JSON files. Google may slightly change the layout or wording on its Google Cloud Console website, but the basic steps of this one-time setup process should remain the same.</p>
+<ol class="order">
+<li class="calibre15"><p class="number"><a href="#calibre_link-985" id="calibre_link-2119" class="calibre6">1</a>. Can you use Google Sheets for free?</p></li>
+<li class="calibre15"><p class="number"><a href="#calibre_link-986" id="calibre_link-2120" class="calibre6">2</a>. Do you need to enter your Google account password into your Python source code to use EZSheets?</p></li>
+<li class="calibre15"><p class="number"><a href="#calibre_link-987" id="calibre_link-2121" class="calibre6">3</a>. At what website can you download the credentials JSON file for your Google account?</p></li>
+<li class="calibre15"><p class="number"><a href="#calibre_link-988" id="calibre_link-2122" class="calibre6">4</a>. Which two Google APIs must you enable to use EZSheets?</p></li>
+<li class="calibre15"><p class="number"><a href="#calibre_link-989" id="calibre_link-2123" class="calibre6">5</a>. After you download your credentials, what files will be created the first time you run <span class="literal">import ezsheets</span>?</p></li>
+<li class="calibre15"><p class="number"><a href="#calibre_link-990" id="calibre_link-2124" class="calibre6">6</a>. What should you do if you accidentally share your credentials file?</p></li>
+<li class="calibre15"><p class="number"><a href="#calibre_link-991" id="calibre_link-2125" class="calibre6">7</a>. Are the project name (which looks like “My Project 23135”) and project ID (which looks like “macro-nuance-362516”) visible to the users of your Python programs who import EZSheets?</p></li>
+</ol>
+</section>
+<section>
+<h3 id="calibre_link-190" type="title" class="h1">Spreadsheet Objects</h3>
+<p class="noindent">In Google Sheets, a spreadsheet can contain multiple sheets (also called <i class="calibre5">worksheets</i>), and each sheet contains columns and rows of cells. You can make a new <span class="literal">Spreadsheet</span> object from an existing Google Sheets spreadsheet, a new blank spreadsheet, or an uploaded Excel spreadsheet. All Google Sheets spreadsheets have a unique ID included in their URL, after the <i class="calibre5">spreadsheets/d/</i> part and before the <i class="calibre5">/edit</i> part.</p>
+<ol class="order">
+<li class="calibre15"><p class="number"><a href="#calibre_link-992" id="calibre_link-2126" class="calibre6">8</a>. Which function creates a new spreadsheet?</p></li>
+<li class="calibre15"><p class="number"><a href="#calibre_link-993" id="calibre_link-2127" class="calibre6">9</a>. Excel files use the filename extension <i class="calibre5">.xlsx</i>. Which function uploads a <i class="calibre5">.xlsx</i> spreadsheet to Google Sheets?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-994" id="calibre_link-2128" class="calibre6">10</a>. Do <span class="literal">Spreadsheet</span> objects have titles? If so, how can you access them?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-995" id="calibre_link-2129" class="calibre6">11</a>. If you open the string in the <span class="literal">url</span> attribute of a <span class="literal">Spreadsheet</span> object in your browser, what do you see?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-996" id="calibre_link-2130" class="calibre6">12</a>. Which function converts a spreadsheet to an Excel file and downloads it?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-997" id="calibre_link-2131" class="calibre6">13</a>. <span role="doc-pagebreak" id="calibre_link-2715" aria-label="107"></span>In what six spreadsheet formats can you download your Google Sheets spreadsheet?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-998" id="calibre_link-2132" class="calibre6">14</a>. How can you list all spreadsheets in your Google account?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-999" id="calibre_link-2133" class="calibre6">15</a>. If you call the <span class="literal">delete()</span> method on a <span class="literal">Spreadsheet</span> object, is it permanently deleted?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1000" id="calibre_link-2134" class="calibre6">16</a>. If someone changes your spreadsheet in their web browser while your Python program is running, how can you update the local <span class="literal">Spreadsheet</span> object in your program?</p></li>
+</ol>
+</section>
+<section>
+<h3 id="calibre_link-191" type="title" class="h1">Sheet Objects</h3>
+<p class="noindent">A <span class="literal">Spreadsheet</span> object contains one or more <span class="literal">Sheet</span> objects. The <span class="literal">Sheet</span> objects represent the rows and columns of data in each sheet. You can access these sheets using the square brackets operator and an integer index, much like accessing values in a list.</p>
+<ol class="order">
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1001" id="calibre_link-2135" class="calibre6">17</a>. What method creates a new, blank <span class="literal">Sheet</span> object?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1002" id="calibre_link-2136" class="calibre6">18</a>. How can you access the <span class="literal">Sheet</span> objects of a <span class="literal">Spreadsheet</span> object?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1003" id="calibre_link-2137" class="calibre6">19</a>. Do <span class="literal">Sheet</span> objects have titles?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1004" id="calibre_link-2138" class="calibre6">20</a>. Say you have a <span class="literal">Sheet</span> object in a variable named <span class="literal">sheet</span>. How do you set the value in cell C5 to the text “Hello”?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1005" id="calibre_link-2139" class="calibre6">21</a>. If cell D9 is set to the integer <span class="literal">30</span>, does <span class="literal">sheet['D9']</span> return an integer or a string?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1006" id="calibre_link-2140" class="calibre6">22</a>. How do you copy an entire <span class="literal">Sheet</span> object of a <span class="literal">Spreadsheet</span> object to a different <span class="literal">Spreadsheet</span> object?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1007" id="calibre_link-2141" class="calibre6">23</a>. Use the <span class="literal">getColumnLetterOf()</span> function to calculate the column letters for column 900. What is the result?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1008" id="calibre_link-2142" class="calibre6">24</a>. Use the <span class="literal">getColumnNumberOf()</span> function to calculate the column number for column ZZ. What is the result?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1009" id="calibre_link-2143" class="calibre6">25</a>. What does the code <span class="literal">ezsheets.convertAddress(2, 3)</span> return: <span class="literal">B3</span> or <span class="literal">C4</span>?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1010" id="calibre_link-2144" class="calibre6">26</a>. What does the code <span class="literal">ezsheets.convertAddress('A2')</span> return?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1011" id="calibre_link-2145" class="calibre6">27</a>. What <span class="literal">Sheet</span> methods can return an entire column or an entire row of cells at once?</p></li>
+</ol>
+</section>
+<section>
+<h3 id="calibre_link-192" type="title" class="h1"><span role="doc-pagebreak" id="calibre_link-2716" aria-label="108" class="calibre1"></span>Google Forms</h3>
+<p class="noindent">Your Google account also gives you access to Google Forms at <i class="calibre5"><a href="https://forms.google.com/" class="calibre6">https://forms.google.com/</a></i>. You can create surveys, event registrations, or feedback forms with Google Forms, then receive the answers that users submit in a Google Sheets spreadsheet. Using EZSheets, your Python programs can access this data from the spreadsheet.</p>
+<ol class="order">
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1012" id="calibre_link-2146" class="calibre6">28</a>. How is Google Forms related to Google Sheets?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1013" id="calibre_link-2147" class="calibre6">29</a>. If someone updates a Google Sheets spreadsheet by filling out a form on Google Forms while your Python program is running, which method will update the local <span class="literal">Spreadsheet</span> object in your program?</p></li>
+</ol>
+</section>
+<section>
+<h3 id="calibre_link-193" type="title" class="h1">Working with Google Sheets Quotas</h3>
+<p class="noindent">Because Google Sheets is online, you can easily share sheets among multiple users who can all access the sheets simultaneously. Google Sheets has quotas limiting how many read and write operations you can perform, however.</p>
+<ol class="order">
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1014" id="calibre_link-2148" class="calibre6">30</a>. Does Google restrict how many spreadsheets an account can create per day?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1015" id="calibre_link-2149" class="calibre6">31</a>. What happens if your code exceeds the activity limit of the Google Sheets API?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1016" id="calibre_link-2150" class="calibre6">32</a>. Can you check your account’s API usage on the Google Cloud Console website?</p></li>
+</ol>
+</section>
+</section>
+<section>
+<h2 id="calibre_link-194" type="title" class="h"><img class="inline" src="../assets/inventwithpython.com/automate3workbook/images/000002.jpg" alt="A simple drawing of a sharpened pencil." /> Practice Projects</h2>
+<p class="noindent">Try the following short projects to practice working with Google Sheets.</p>
+<section>
+<h3 id="calibre_link-195" type="title" class="h1">Uploading All Files in a Folder</h3>
+<p class="noindent">Write a function named <span class="literal">upload_all_spreadsheets()</span> that searches for all <i class="calibre5">.xlsx</i> and <i class="calibre5">.csv</i> files in the current working directory and uploads them to Google Sheets. Before uploading each spreadsheet, print the string <span class="literal">f'Uploading {filename}...'</span> to indicate the upload progress.</p>
+<p class="indent">Save this function in a file named <i class="calibre5">uploadAllSpreadsheets.py</i>.</p>
+</section>
+<section>
+<h3 id="calibre_link-196" type="title" class="h1"><span role="doc-pagebreak" id="calibre_link-2717" aria-label="109" class="calibre1"></span>Google Sheets Home Folder Report</h3>
+<p class="noindent">This project is similar to the “Excel Home Folder Report” project in <a href="#calibre_link-22" class="calibre6">Chapter 14</a> of this workbook. Write a program that lists the 100 largest files on your computer, along with their sizes, in a nicely formatted Google Sheets spreadsheet that you can share with your boss before the end of the day. They will, once again, forget to read it.</p>
+<p class="indent">Start this project by writing a function named <span class="literal">get_home_folder_size()</span> that returns a list of tuples. Each tuple has two items: a filename string and an integer of the file’s size in bytes. Using the <span class="literal">os.listdir()</span> function and the <span class="literal">stat()</span> method of <span class="literal">Path</span> objects discussed in <a href="#calibre_link-18" class="calibre6">Chapter 10</a> of <i class="calibre5">Automate the Boring Stuff with Python</i>, your Python program can examine every file in the home folder.</p>
+<p class="indent">Then, write a function named <span class="literal">make_google_sheets_report()</span> that calls the <span class="literal">get_home_folder_size()</span> function and places the results in a Google Sheets spreadsheet with the title <i class="calibre5">Home Files Report</i>. In this spreadsheet, column A should list the filenames and column B should list the file sizes.</p>
+<p class="indent">Save this program in a file named <i class="calibre5">homeFilesReportGoogleSheets.py</i>.<span role="doc-pagebreak" id="calibre_link-2718" aria-label="110"></span></p>
+</section>
+</section>
+</section>
+</div>
+
+
+
+
+
+
+
+
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"8bd877e77db3400e83e36e899a2ab1fd","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+<style>.atbs-nav{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;justify-content:space-between;margin:1rem 0;padding:.7rem .8rem;border:1px solid #cfd8dc;border-radius:10px;background:#f6fbfd;font:14px/1.35 system-ui,-apple-system,sans-serif;}.atbs-nav-center{color:#455a64;font-weight:600;}.atbs-nav-link{text-decoration:none;color:#0b5b6b;background:#e6f3f7;border:1px solid #c7dfe7;border-radius:7px;padding:.42rem .55rem;display:inline-block;}.atbs-nav-link:hover{background:#d9edf3;}.atbs-nav-disabled{opacity:.55;cursor:not-allowed;}</style><nav class='atbs-nav' aria-label='Chapter pagination'><a class='atbs-nav-link' href='../book/chapter15.html' aria-label='Previous chapter'>&larr; Book Chapter 15</a><span class='atbs-nav-center'><a class='atbs-nav-link' href='../index.html'>Contents</a> Workbook Chapter 15</span><a class='atbs-nav-link' href='../book/chapter16.html' aria-label='Next chapter'>Book Chapter 16 &rarr;</a></nav></body></html>

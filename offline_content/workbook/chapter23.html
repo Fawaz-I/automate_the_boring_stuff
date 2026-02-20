@@ -1,0 +1,190 @@
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><link href="../assets/inventwithpython.com/automate3workbook/style.css" rel="stylesheet" type="text/css" /><title>Automate the Boring Stuff with Python Workbook: Projects and Exercises to Sharpen Your Python Skills</title></head><body><style>.atbs-nav{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;justify-content:space-between;margin:1rem 0;padding:.7rem .8rem;border:1px solid #cfd8dc;border-radius:10px;background:#f6fbfd;font:14px/1.35 system-ui,-apple-system,sans-serif;}.atbs-nav-center{color:#455a64;font-weight:600;}.atbs-nav-link{text-decoration:none;color:#0b5b6b;background:#e6f3f7;border:1px solid #c7dfe7;border-radius:7px;padding:.42rem .55rem;display:inline-block;}.atbs-nav-link:hover{background:#d9edf3;}.atbs-nav-disabled{opacity:.55;cursor:not-allowed;}</style><nav class='atbs-nav' aria-label='Chapter pagination'><a class='atbs-nav-link' href='../book/chapter23.html' aria-label='Previous chapter'>&larr; Book Chapter 23</a><span class='atbs-nav-center'><a class='atbs-nav-link' href='../index.html'>Contents</a> Workbook Chapter 23</span><a class='atbs-nav-link' href='../book/chapter24.html' aria-label='Next chapter'>Book Chapter 24 &rarr;</a></nav>
+
+
+
+
+<div class="calibre" id="calibre_link-31">
+<section type="chapter" role="doc-chapter" aria-labelledby="ch23">
+<h1 id="calibre_link-2775" type="title" class="h1ch"><span role="doc-pagebreak" id="calibre_link-2776" aria-label="153" class="calibre1"></span><span class="big">23</span><span class="break1"></span>CONTROLLING THE KEYBOARD AND MOUSE</h1>
+<p class="noindent-c">Whether you need to click through repetitive menus, fill out forms, or interact with graphical applications, PyAutoGUI enables your scripts to mimic human interactions with the computer. Mastering its use will help you automate almost any task you perform, saving you time and reducing your manual effort.</p>
+<aside type="sidebar" class="sidebar" aria-labelledby="side23" role="doc-example">
+<section>
+<h2 type="title" class="stitle" id="calibre_link-2777"><img class="inline" src="../assets/inventwithpython.com/automate3workbook/images/000000.jpg" alt="A simple drawing of a light bulb." /> LEARNING OBJECTIVES</h2>
+<ul class="b-bullet">
+<li class="bull">Control the mouse cursor to make it click, drag, and scroll in other applications running on your computer.</li>
+<li class="bull">Control the keyboard to send key presses to other applications, including shortcut hotkey combinations.</li>
+<li class="bull">Know the limitations of GUI automation and how to do an emergency shutdown if your program gets stuck or goes out of control.</li>
+<li class="bull">Use PyAutoGUI’s MouseInfo feature to help you plan where your Python script should move and click the mouse.</li>
+<li class="bull"><span role="doc-pagebreak" id="calibre_link-2778" aria-label="154"></span>Locate images on the screen with PyAutoGUI’s screenshot and image-recognition features.</li>
+<li class="bull">Obtain information about the precise coordinates and sizes of various application windows on the screen.</li>
+</ul>
+</section>
+</aside>
+<section>
+<h2 id="calibre_link-260" type="title" class="h"><img class="inline" src="../assets/inventwithpython.com/automate3workbook/images/000005.jpg" alt="A grey circle with a white question mark at the center" /> Practice Questions</h2>
+<p class="noindent">These questions test your ability to use PyAutoGUI to automate GUI tasks such as moving the mouse, clicking buttons, typing text, and taking screenshots.</p>
+<section>
+<h3 id="calibre_link-261" type="title" class="h1">Staying on Track</h3>
+<p class="noindent">Before you jump into a GUI automation, you should know how to escape problems that may arise. Python can move your mouse and enter keystrokes at an incredible speed. In fact, it might be too fast for other programs to keep up with. Also, if something goes wrong but your program keeps moving the mouse around, it will be hard to tell exactly what the program is doing or how to recover from the problem. Fortunately, there are several ways to prevent or recover from GUI automation problems.</p>
+<ol class="order">
+<li class="calibre15"><p class="number"><a href="#calibre_link-1323" id="calibre_link-2455" class="calibre6">1</a>. Why isn’t it easy to press <span class="smallcaps">ctrl</span>-C to stop a Python script using PyAutoGUI?</p></li>
+<li class="calibre15"><p class="number"><a href="#calibre_link-1324" id="calibre_link-2456" class="calibre6">2</a>. How can you use the mouse to stop a Python script using PyAutoGUI?</p></li>
+<li class="calibre15"><p class="number"><a href="#calibre_link-1325" id="calibre_link-2457" class="calibre6">3</a>. What is the <span class="literal">pyautogui.PAUSE</span> setting, and what does it mean when it’s set to <span class="literal">0.1</span>?</p></li>
+<li class="calibre15"><p class="number"><a href="#calibre_link-1326" id="calibre_link-2458" class="calibre6">4</a>. What exception is raised if you move the mouse to one of the four corners of the screen?</p></li>
+</ol>
+</section>
+<section>
+<h3 id="calibre_link-262" type="title" class="h1">Controlling Mouse Movement</h3>
+<p class="noindent">PyAutoGUI’s mouse functions use x- and y-coordinates similar to the coordinate system used for images, discussed in <a href="#calibre_link-29" class="calibre6">Chapter 21</a> of this workbook. Answer the following questions about moving the mouse cursor around the screen.</p>
+<ol class="order">
+<li class="calibre15"><p class="number"><a href="#calibre_link-1327" id="calibre_link-2459" class="calibre6">5</a>. What are the x- and y-coordinates of the origin?</p></li>
+<li class="calibre15"><p class="number"><a href="#calibre_link-1328" id="calibre_link-2460" class="calibre6">6</a>. Which corner of the screen is the origin?</p></li>
+<li class="calibre15"><p class="number"><a href="#calibre_link-1329" id="calibre_link-2461" class="calibre6">7</a>. Which letter represents the horizontal coordinate?</p></li>
+<li class="calibre15"><p class="number"><a href="#calibre_link-1330" id="calibre_link-2462" class="calibre6">8</a>. Which letter represents the vertical coordinate?</p></li>
+<li class="calibre15"><p class="number"><a href="#calibre_link-1331" id="calibre_link-2463" class="calibre6">9</a>. As you move the mouse down the screen toward the bottom, how does the y-coordinate change?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1332" id="calibre_link-2464" class="calibre6">10</a>. As you move the mouse down the screen toward the bottom, how does the x-coordinate change?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1333" id="calibre_link-2465" class="calibre6">11</a>. <span role="doc-pagebreak" id="calibre_link-2779" aria-label="155"></span>If the screen’s resolution is 1,920×1,080, what is the coordinate of the lower-right corner?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1334" id="calibre_link-2466" class="calibre6">12</a>. What function returns the size of the screen resolution?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1335" id="calibre_link-2467" class="calibre6">13</a>. If a variable named <span class="literal">screen_size</span> contains a named tuple value <span class="literal">Size(width=1920, height=1080)</span>, what does <span class="literal">screen_size[1]</span> evaluate to?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1336" id="calibre_link-2468" class="calibre6">14</a>. If a variable named <span class="literal">screen_size</span> contains a named tuple value <span class="literal">Size(width=1920, height=1080)</span>, what does <span class="literal">screen_size.height</span> evaluate to?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1337" id="calibre_link-2469" class="calibre6">15</a>. What function call do you make if you want to move the mouse cursor to 10 pixels from the left edge of the screen and 20 pixels from the top edge of the screen?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1338" id="calibre_link-2470" class="calibre6">16</a>. The top-left corner of a window is at the coordinates 100, 200. What function call do you make if you want to move the mouse cursor to 10 pixels from the left edge of the window and 20 pixels from the top edge of the window?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1339" id="calibre_link-2471" class="calibre6">17</a>. The function call <span class="literal">pyautogui.move(0, 10)</span> moves the mouse cursor 10 pixels down. How far left or right does it move the mouse cursor?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1340" id="calibre_link-2472" class="calibre6">18</a>. If the function call <span class="literal">pyautogui.move(100, 0)</span> moves the mouse cursor right by 100 pixels, what function call moves the mouse cursor left by 100 pixels?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1341" id="calibre_link-2473" class="calibre6">19</a>. What is the difference between the <span class="literal">pyautogui.moveTo()</span> and <span class="literal">pyautogui.move()</span> functions?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1342" id="calibre_link-2474" class="calibre6">20</a>. What does adding the <span class="literal">duration=0.25</span> keyword to a <span class="literal">pyautogui.move()</span> or <span class="literal">pyautogui.moveTo()</span> function call do?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1343" id="calibre_link-2475" class="calibre6">21</a>. Imagine that calling <span class="literal">pyautogui.position()</span> returned <span class="literal">Point(300, 200)</span>; then, you called <span class="literal">pyautogui.move(10, 20)</span>. What would calling <span class="literal">pyautogui</span><span class="literal">.position()</span> return?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1344" id="calibre_link-2476" class="calibre6">22</a>. If you ran <span class="literal">pos = pyautogui.position()</span>, what would <span class="literal">pos[0] == pos.x and pos[1] == pos.y</span> evaluate to?</p></li>
+</ol>
+</section>
+<section>
+<h3 id="calibre_link-263" type="title" class="h1">Controlling Mouse Interaction</h3>
+<p class="noindent">Once you know how to move the mouse and figure out where it is on the screen, you’re ready to start clicking, dragging, and scrolling. PyAutoGUI has functions for sending these virtual mouse actions to your computer.</p>
+<ol class="order">
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1345" id="calibre_link-2477" class="calibre6">23</a>. What is the difference between <span class="literal">pyautogui.click()</span> and <span class="literal">pyautogui.click(10, 20)</span>?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1346" id="calibre_link-2478" class="calibre6">24</a>. How can you make PyAutoGUI click the right mouse button?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1347" id="calibre_link-2479" class="calibre6">25</a>. What functions are analogous to <span class="literal">pyautogui.move()</span> and <span class="literal">pyautogui.moveTo()</span>, except they also hold down the left mouse button as the mouse cursor moves?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1348" id="calibre_link-2480" class="calibre6">26</a>. What is the active, or focused, window?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1349" id="calibre_link-2481" class="calibre6">27</a>. <span role="doc-pagebreak" id="calibre_link-2780" aria-label="156"></span>What does <span class="literal">pyautogui.scroll(10)</span> do?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1350" id="calibre_link-2482" class="calibre6">28</a>. How can you scroll the mouse wheel down?</p></li>
+</ol>
+</section>
+<section>
+<h3 id="calibre_link-264" type="title" class="h1">Planning Your Mouse Movements</h3>
+<p class="noindent">One of the challenges when writing a program that will automate clicking the screen is finding the x- and y-coordinates of the things you’d like to click. In those cases, it can be helpful to launch a small application named MouseInfo that is included in PyAutoGUI.</p>
+<ol class="order">
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1351" id="calibre_link-2483" class="calibre6">29</a>. What information does the MouseInfo app give you?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1352" id="calibre_link-2484" class="calibre6">30</a>. How can you launch the MouseInfo app?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1353" id="calibre_link-2485" class="calibre6">31</a>. Say you want to quickly record the x, y positions of 20 buttons on the screen. How can you do this with the MouseInfo app?</p></li>
+</ol>
+</section>
+<section>
+<h3 id="calibre_link-265" type="title" class="h1">Taking Screenshots</h3>
+<p class="noindent">Your GUI automation programs don’t have to click and type blindly. PyAutoGUI’s screenshot features can create image files based on the current contents of the screen. These functions can also return a Pillow <span class="literal">Image</span> object of the current screen’s appearance.</p>
+<ol class="order">
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1354" id="calibre_link-2486" class="calibre6">32</a>. What is a screenshot?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1355" id="calibre_link-2487" class="calibre6">33</a>. What Python package handles screenshots and images for PyAutoGUI?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1356" id="calibre_link-2488" class="calibre6">34</a>. What does the <span class="literal">pyautogui.pixel()</span> function return?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1357" id="calibre_link-2489" class="calibre6">35</a>. Does the value returned by <span class="literal">pyautogui.pixel()</span> contain alpha (transparency) information?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1358" id="calibre_link-2490" class="calibre6">36</a>. How can checking the color of a pixel let your program know if something is wrong?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1359" id="calibre_link-2491" class="calibre6">37</a>. The <span class="literal">pyautogui.screenshot()</span> function returns an <span class="literal">Image</span> object; how can you save this image as a file named <i class="calibre5">screenshot.png</i>?</p></li>
+</ol>
+</section>
+<section>
+<h3 id="calibre_link-266" type="title" class="h1">Image Recognition</h3>
+<p class="noindent">If you’re not sure exactly where PyAutoGUI should click, you can use image recognition to figure it out. PyAutoGUI can take an image of the element you want to click and figure out its coordinates with the <span class="literal">pyautogui.locateOnScreen()</span> function. Because you can’t be sure that your program will always find the image, it’s a good idea to use the <span class="literal">try</span> and <span class="literal">except</span> statements when calling the function.</p>
+<ol class="order">
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1360" id="calibre_link-2492" class="calibre6">38</a>. <span role="doc-pagebreak" id="calibre_link-2781" aria-label="157"></span>Say you want PyAutoGUI to locate a Submit button on the screen using the <span class="literal">pyautogui.locateOnScreen()</span> function. How can you obtain an image file of this Submit button?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1361" id="calibre_link-2493" class="calibre6">39</a>. Say you have an image of the Submit button stored in <i class="calibre5">submit.png</i>. How can you determine where on the screen this image is?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1362" id="calibre_link-2494" class="calibre6">40</a>. What data type does the <span class="literal">pyautogui.locateOnScreen()</span> function return?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1363" id="calibre_link-2495" class="calibre6">41</a>. If the Submit button you’re searching for is partially obscured by another window, will the <span class="literal">pyautogui.locateOnScreen()</span> function still be able to find it?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1364" id="calibre_link-2496" class="calibre6">42</a>. What happens if the <span class="literal">pyautogui.locateOnScreen()</span> function is unable to find the image you pass it on the screen?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1365" id="calibre_link-2497" class="calibre6">43</a>. What does the <span class="literal">pyautogui.locateOnScreen()</span> function return if the same Submit button appears multiple times on the screen?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1366" id="calibre_link-2498" class="calibre6">44</a>. What happens if you run the following code and the same Submit button exists in three separate places?</p>
+<pre class="calibre16">import pyautogui
+for box in pyautogui.locateAllOnScreen('submit.png'):
+&nbsp;&nbsp;&nbsp;&nbsp;print('Found submit button on screen.')</pre></li>
+</ol>
+</section>
+<section>
+<h3 id="calibre_link-267" type="title" class="h1">Getting Window Information</h3>
+<p class="noindent">Image recognition is a fragile way to find things on the screen; if a single pixel is a different color, <span class="literal">pyautogui.locateOnScreen()</span> won’t find the image. To locate a particular window, it’s faster and more reliable to use PyAutoGUI’s window features.</p>
+<ol class="order">
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1367" id="calibre_link-2499" class="calibre6">45</a>. Imagine that you run <span class="literal">win = pyautogui.getActiveWindow()</span>. What code evaluates to the text in the window’s title bar?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1368" id="calibre_link-2500" class="calibre6">46</a>. How could you obtain a <span class="literal">Window</span> object of every window on the screen?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1369" id="calibre_link-2501" class="calibre6">47</a>. What function call would return <span class="literal">Window</span> objects for all of the windows of the Notepad application currently running?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1370" id="calibre_link-2502" class="calibre6">48</a>. Imagine that <span class="literal">pyautogui.position()</span> returns <span class="literal">Point(x=100, y=200)</span>. What function call would return <span class="literal">Window</span> objects for all of the windows underneath the mouse cursor?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1371" id="calibre_link-2503" class="calibre6">49</a>. What happens when you change the <span class="literal">top</span> or <span class="literal">left</span> attributes of a <span class="literal">Window</span> object?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1372" id="calibre_link-2504" class="calibre6">50</a>. What happens when you change the <span class="literal">width</span> or <span class="literal">height</span> attributes of a <span class="literal">Window</span> object?</p></li>
+</ol>
+</section>
+<section>
+<h3 id="calibre_link-268" type="title" class="h1"><span role="doc-pagebreak" id="calibre_link-2782" aria-label="158" class="calibre1"></span>Controlling the Keyboard</h3>
+<p class="noindent">The <span class="literal">pyautogui.write()</span> function sends virtual key presses to the computer, which enables you to fill out forms or enter text into applications. In PyAutoGUI, keyboard keys are represented by short string values, such as <span class="literal">'esc'</span> for the <span class="smallcaps">esc</span> key and <span class="literal">'enter'</span> for the <span class="smallcaps">enter</span> key.</p>
+<ol class="order">
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1373" id="calibre_link-2505" class="calibre6">51</a>. When you call <span class="literal">pyautogui.write()</span>, which application receives the keyboard key presses?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1374" id="calibre_link-2506" class="calibre6">52</a>. Write code that would simulate 1,000 presses of a lowercase <i class="calibre5">x</i> character.</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1375" id="calibre_link-2507" class="calibre6">53</a>. What is the difference between <span class="literal">pyautogui.write('leftleft')</span> and <span class="literal">pyautogui.write(['left', 'left'])</span>?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1376" id="calibre_link-2508" class="calibre6">54</a>. What variable in the <span class="literal">pyautogui</span> module contains all the keyboard key strings in PyAutoGUI?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1377" id="calibre_link-2509" class="calibre6">55</a>. What is the difference between <span class="literal">pyautogui.write('left')</span> and <span class="literal">pyautogui.press('left')</span>?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-1378" id="calibre_link-2510" class="calibre6">56</a>. Write code that could simulate pressing the <span class="smallcaps">ctrl</span>-C hotkey combination.</p></li>
+</ol>
+</section>
+</section>
+<section>
+<h2 id="calibre_link-269" type="title" class="h"><img class="inline" src="../assets/inventwithpython.com/automate3workbook/images/000002.jpg" alt="A simple drawing of a sharpened pencil." /> Practice Projects</h2>
+<p class="noindent">In the following projects, you’ll automate the creation of Pollock-like paintings, and record and play back mouse movements.</p>
+<section>
+<h3 id="calibre_link-270" type="title" class="h1">Jackson Pollock Bot</h3>
+<p class="noindent">The American artist Jackson Pollock is known for his “drip technique” of painting, which produced interesting art. Let’s write a program that moves the mouse randomly in a graphics app (such as MS Paint on Windows or Paintbrush on macOS) to create our own Pollock-like paintings.</p>
+<p class="indent">Your program should use PyAutoGUI to perform the following actions while the graphics app is in focus:</p>
+<ol class="calibre18">
+<li class="calibre15"><p class="numbern">Prompt the user to “Hover the mouse cursor at the top-left corner of the canvas . . .” and pause for five seconds. This pause gives the user time to determine where on the screen the program should draw.</p></li>
+<li class="calibre15"><p class="numbern">Record the current mouse cursor position in the variables <span class="literal">left</span> and <span class="literal">top</span>.</p></li>
+<li class="calibre15"><p class="numbern">Prompt the user to “Hover the mouse cursor at the bottom-right corner of the canvas . . .” and pause for five seconds. This position sets the lower bounds of the canvas in which to draw.</p></li>
+<li class="calibre15"><p class="numbern">Record the current mouse cursor position in the variables <span class="literal">right</span> and <span class="literal">bottom</span>.</p></li>
+<li class="calibre15"><p class="numbern">Move the mouse to a random position between these two corners. This will be the starting point for a randomly drawn line in the graphics app.</p></li>
+<li class="calibre15"><p class="numbern">Drag the mouse to a random position between these two corners, drawing a line.</p></li>
+<li class="calibre15"><p class="numbern">Repeat the previous two steps 30 times in total.</p></li>
+</ol>
+<p class="indent"><span role="doc-pagebreak" id="calibre_link-2783" aria-label="159"></span>You could set the color and brush style in the graphics app before running the program to generate images that have more than simple black lines. You could also change to the color and brush style before running the program a second time to create a more dynamic image. I created the painting in <a href="#calibre_link-1379" class="calibre6">Figure 23-1</a> using this program.</p>
+<figure class="image" id="calibre_link-1379">
+<img src="../assets/inventwithpython.com/automate3workbook/images/000001.jpg" alt="A Microsoft Paint window featuring many overlapping brushstrokes." class="calibre3" />
+<figcaption>
+<p class="figcap"><i class="calibre5">Figure 23-1: A bot-created Jackson Pollock painting</i></p>
+</figcaption>
+</figure>
+<p class="indent">Hint: Calling <span class="literal">pyautogui.countdown(5)</span> can not only produce a five-second pause but also print a numeric countdown in the terminal window so that the user knows when each pause ends.</p>
+<p class="indent">Save this program in a file named <i class="calibre5">pollockBot.py</i>.</p>
+</section>
+<section>
+<h3 id="calibre_link-271" type="title" class="h1">Mouse Movement Recorder</h3>
+<p class="noindent">Write a program that monitors the position of the mouse every 0.1 seconds and records its coordinates to a JSON file. We’ll use this data in the next practice project, “Mouse Movement Playback.”</p>
+<p class="indent">The program should run an infinite <span class="literal">while</span> loop that records the mouse position by calling <span class="literal">pyautogui.position()</span>, waits one-tenth of a second by calling <span class="literal">pyautogui.sleep(0.1)</span>, and then repeats. When the user presses the <span class="smallcaps">ctrl</span>-C keyboard combination, Python will raise a <span class="literal">KeyboardInterrupt</span> exception. Your program should catch this exception, write the recorded mouse positions as JSON data to a file named <i class="calibre5">mousePositions.json</i>, and then exit.</p>
+<p class="indent">The JSON file may look something like this:</p>
+<pre class="pre">[[1331, 1073], [1517, 944], [1619, 727], [1615, 562], [1566, 452],
+<span class="codeitalic">--snip--</span>
+[1855, 948], [1855, 948], [1855, 948], [1855, 948], [1855, 948]]</pre>
+<p class="indent">To indicate to the user that the program is working, print the text “Recording mouse positions. Press <span class="smallcaps">ctrl</span>-C to quit.” when the program first starts. When the user presses <span class="smallcaps">ctrl</span>-C to stop the program, print the text “Done. 473 positions recorded.” (or however many mouse positions the program recorded).</p>
+</section>
+<section>
+<h3 id="calibre_link-272" type="title" class="h1"><span role="doc-pagebreak" id="calibre_link-2784" aria-label="160" class="calibre1"></span>Mouse Movement Playback</h3>
+<p class="noindent">Write a program that takes the x- and y-coordinates recorded by the “Mouse Movement Recorder” program from the previous exercise and moves the mouse cursor to each location, with a 0.1-second pause in between. Doing so effectively “plays back” the movements of the mouse. You could extend this functionality in your own programs to carry out actions the user recorded.</p>
+<p class="indent">The first part of the program reads the JSON data from <i class="calibre5">mousePositions.json</i>. The second part of the program calls <span class="literal">pyautogui.moveTo()</span> to move the mouse cursor to a given position, then calls <span class="literal">pyautogui.sleep(0.1)</span> to pause for one-tenth of a second.</p>
+<p class="indent">While this program isn’t particularly useful on its own, you could use this sort of record-and-playback feature as part of a more elaborate GUI automation program.</p>
+<p class="indent">Save this program in a file named <i class="calibre5">playbackMouseMove.py</i>.</p>
+</section>
+</section>
+</section>
+</div>
+
+
+
+
+
+
+
+
+
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"8bd877e77db3400e83e36e899a2ab1fd","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+<style>.atbs-nav{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;justify-content:space-between;margin:1rem 0;padding:.7rem .8rem;border:1px solid #cfd8dc;border-radius:10px;background:#f6fbfd;font:14px/1.35 system-ui,-apple-system,sans-serif;}.atbs-nav-center{color:#455a64;font-weight:600;}.atbs-nav-link{text-decoration:none;color:#0b5b6b;background:#e6f3f7;border:1px solid #c7dfe7;border-radius:7px;padding:.42rem .55rem;display:inline-block;}.atbs-nav-link:hover{background:#d9edf3;}.atbs-nav-disabled{opacity:.55;cursor:not-allowed;}</style><nav class='atbs-nav' aria-label='Chapter pagination'><a class='atbs-nav-link' href='../book/chapter23.html' aria-label='Previous chapter'>&larr; Book Chapter 23</a><span class='atbs-nav-center'><a class='atbs-nav-link' href='../index.html'>Contents</a> Workbook Chapter 23</span><a class='atbs-nav-link' href='../book/chapter24.html' aria-label='Next chapter'>Book Chapter 24 &rarr;</a></nav></body></html>

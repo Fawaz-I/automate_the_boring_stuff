@@ -1,0 +1,265 @@
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><link href="../assets/inventwithpython.com/automate3workbook/style.css" rel="stylesheet" type="text/css" /><title>Automate the Boring Stuff with Python Workbook: Projects and Exercises to Sharpen Your Python Skills</title></head><body><style>.atbs-nav{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;justify-content:space-between;margin:1rem 0;padding:.7rem .8rem;border:1px solid #cfd8dc;border-radius:10px;background:#f6fbfd;font:14px/1.35 system-ui,-apple-system,sans-serif;}.atbs-nav-center{color:#455a64;font-weight:600;}.atbs-nav-link{text-decoration:none;color:#0b5b6b;background:#e6f3f7;border:1px solid #c7dfe7;border-radius:7px;padding:.42rem .55rem;display:inline-block;}.atbs-nav-link:hover{background:#d9edf3;}.atbs-nav-disabled{opacity:.55;cursor:not-allowed;}</style><nav class='atbs-nav' aria-label='Chapter pagination'><a class='atbs-nav-link' href='../book/chapter1.html' aria-label='Previous chapter'>&larr; Book Chapter 1</a><span class='atbs-nav-center'><a class='atbs-nav-link' href='../index.html'>Contents</a> Workbook Chapter 1</span><a class='atbs-nav-link' href='../book/chapter2.html' aria-label='Next chapter'>Book Chapter 2 &rarr;</a></nav>
+
+
+
+
+
+
+
+<div class="calibre" id="calibre_link-9">
+<section type="chapter" role="doc-chapter" aria-labelledby="ch01">
+<h1 id="calibre_link-2581" type="title" class="h1ch"><span role="doc-pagebreak" id="calibre_link-2582" aria-label="1" class="calibre1"></span><span class="big">1</span><span class="break1"></span>PYTHON BASICS</h1>
+<p class="noindent-c">You’ll begin this workbook by exploring the basic building blocks of programming: writing expressions, experimenting with the interactive shell, and creating your first program. You’ll also work with concepts such as values, data types, and a few functions, such as <span class="literal">print()</span> and <span class="literal">input()</span>.</p>
+<aside type="sidebar" class="sidebar" aria-labelledby="side1" role="doc-example">
+<section>
+<h2 type="title" class="stitle" id="calibre_link-2583"><img class="inline" src="../assets/inventwithpython.com/automate3workbook/images/000000.jpg" alt="A simple drawing of a light bulb." /> LEARNING OBJECTIVES</h2>
+<ul class="b-bullet">
+<li class="bull">Experiment with instructions in the interactive shell.</li>
+<li class="bull">Identify the expressions, values, operators, and data types in code.</li>
+<li class="bull">Understand how to write strings and do string concatenation or replication.</li>
+<li class="bull">Use variables to store values and include variables in expressions.</li>
+<li class="bull">Become comfortable encountering errors and reading error messages.</li>
+<li class="bull">Write, run, and dissect the individual parts of a program.</li>
+<li class="bull">Call functions such as <span class="literal">print()</span>, <span class="literal">input()</span>, <span class="literal">len()</span>, <span class="literal">abs()</span>, and <span class="literal">round()</span>.</li>
+<li class="bull">Discover and convert data types with the <span class="literal">type()</span>, <span class="literal">int()</span>, <span class="literal">float()</span>, and <span class="literal">str()</span> functions.</li>
+</ul>
+</section>
+</aside>
+<section>
+<h2 id="calibre_link-40" type="title" class="h"><span role="doc-pagebreak" id="calibre_link-1088" aria-label="2" class="calibre1"></span><img class="inline" src="../assets/inventwithpython.com/automate3workbook/images/000005.jpg" alt="A grey circle with a white question mark at the center" /> Practice Questions</h2>
+<p class="noindent">The following questions cover your knowledge of technical terms and basic concepts. For many of these questions, you can get the answer by entering the code into the interactive shell. This isn’t “cheating”; rather, it’s how many professional software developers verify that the code they write actually works in the way they intended. Think of the interactive shell as a way you can double-check your work.</p>
+<section>
+<h3 id="calibre_link-41" type="title" class="h1">Entering Expressions into the Interactive Shell</h3>
+<p class="noindent">Entering code into the interactive shell lets you experiment with running instructions one at a time. At the <span class="literal">&gt;&gt;&gt;</span> prompt, you can enter expressions made up of values, operators, and other Python code. After running the code, the interactive shell prints the result.</p>
+<p class="indent">Match the names for questions 1 through 7 to these math operators:</p>
+<pre class="pre1a">+&nbsp;&nbsp;-&nbsp;&nbsp;*&nbsp;&nbsp;/&nbsp;&nbsp;**&nbsp;&nbsp;//&nbsp;&nbsp;%</pre>
+<ol class="order">
+<li class="calibre15"><p class="number"><a href="#calibre_link-282" id="calibre_link-1417" class="calibre6">1</a>. Division</p></li>
+<li class="calibre15"><p class="number"><a href="#calibre_link-283" id="calibre_link-1418" class="calibre6">2</a>. Multiplication</p></li>
+<li class="calibre15"><p class="number"><a href="#calibre_link-284" id="calibre_link-1419" class="calibre6">3</a>. Subtraction</p></li>
+<li class="calibre15"><p class="number"><a href="#calibre_link-285" id="calibre_link-1420" class="calibre6">4</a>. Modulo</p></li>
+<li class="calibre15"><p class="number"><a href="#calibre_link-286" id="calibre_link-1421" class="calibre6">5</a>. Addition</p></li>
+<li class="calibre15"><p class="number"><a href="#calibre_link-287" id="calibre_link-1422" class="calibre6">6</a>. Exponentiation</p></li>
+<li class="calibre15"><p class="number"><a href="#calibre_link-288" id="calibre_link-1423" class="calibre6">7</a>. Floor division</p></li>
+</ol>
+<p class="indent">An expression is the most basic kind of programming instruction in the language. Expressions consist of values (such as <span class="literal">2</span>) and operators (such as <span class="literal">+</span>), and they can always evaluate (that is, reduce) down to a single value.</p>
+<ol class="order">
+<li class="calibre15"><p class="number"><a href="#calibre_link-289" id="calibre_link-1424" class="calibre6">8</a>. Is there a difference in how Python interprets these two expressions?</p>
+<pre class="pre1a">2 + 2 and 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ 2</pre></li>
+<li class="calibre15"><p class="number"><a href="#calibre_link-290" id="calibre_link-1425" class="calibre6">9</a>. If the expression <span class="literal">26 / 8</span> evaluates to <span class="literal">3.25</span>, what does the expression <span class="literal">26 // 8</span> evaluate to?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-291" id="calibre_link-1426" class="calibre6">10</a>. 26 divided by 8 is 3 with a remainder of 2. What does the expression <span class="literal">26 % 8</span> evaluate to?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-292" id="calibre_link-1427" class="calibre6">11</a>. Write the expression that adds the numbers 1 to 10. (Hint: It begins with <span class="literal">1 + 2 + 3 +</span> and so on.)</p></li>
+</ol>
+<p class="indent">Which of the two operators in the following expressions is evaluated first according to Python’s order of operation rules?</p>
+<ol class="order">
+<li class="calibre15"><p class="number1"><a href="#calibre_link-293" id="calibre_link-1428" class="calibre6">12</a>. <span class="literal">(4 + 5) * 6</span></p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-294" id="calibre_link-1429" class="calibre6">13</a>. <span class="literal">2 ** 3 + 1</span></p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-295" id="calibre_link-1430" class="calibre6">14</a>. <span role="doc-pagebreak" id="calibre_link-1098" aria-label="3"></span><span class="literal">1 + 2 ** 3</span></p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-296" id="calibre_link-1431" class="calibre6">15</a>. <span class="literal">(1 + 2) ** 3</span></p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-297" id="calibre_link-1432" class="calibre6">16</a>. <span class="literal">2 + 4 + 6</span></p></li>
+</ol>
+<p class="indent">Which of the following expressions produce errors? (You can enter them into the interactive shell to check.)</p>
+<ol class="order">
+<li class="calibre15"><p class="number1"><a href="#calibre_link-298" id="calibre_link-1433" class="calibre6">17</a>. <span class="literal">2 +</span></p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-299" id="calibre_link-1434" class="calibre6">18</a>. <span class="literal">42</span></p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-300" id="calibre_link-1435" class="calibre6">19</a>. <span class="literal">((3 + 1) * 2)</span></p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-301" id="calibre_link-1436" class="calibre6">20</a>. <span class="literal">((3 + 1 * 2)</span></p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-302" id="calibre_link-1437" class="calibre6">21</a>. <span class="literal">(0)</span></p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-303" id="calibre_link-1438" class="calibre6">22</a>. <span class="literal">1 + 2 3</span></p></li>
+</ol>
+</section>
+<section>
+<h3 id="calibre_link-42" type="title" class="h1">The Integer, Floating-Point, and String Data Types</h3>
+<p class="noindent">A data type is a category for values, and every value belongs to exactly one data type. The integer (or int) data type includes values that are whole numbers. Numbers with a decimal point, such as <span class="literal">3.14</span>, are called floating-point numbers (or floats). Text values are called strings, or strs (pronounced <i class="calibre5">stirs</i>).</p>
+<p class="indent">Label the data types of the values in questions 23 through 29 as either int, float, or string. Hint: You can pass them to the <span class="literal">type()</span> function in the interactive shell to find the answers, such as <span class="literal">type(2)</span> or <span class="literal">type('hello')</span>.</p>
+<ol class="order">
+<li class="calibre15"><p class="number1"><a href="#calibre_link-304" id="calibre_link-1439" class="calibre6">23</a>. <span class="literal">2</span></p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-305" id="calibre_link-1440" class="calibre6">24</a>. <span class="literal">-2</span></p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-306" id="calibre_link-1441" class="calibre6">25</a>. <span class="literal">2.0</span></p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-307" id="calibre_link-1442" class="calibre6">26</a>. <span class="literal">'hello'</span></p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-308" id="calibre_link-1443" class="calibre6">27</a>. <span class="literal">2.2</span></p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-309" id="calibre_link-1444" class="calibre6">28</a>. <span class="literal">'2'</span></p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-310" id="calibre_link-1445" class="calibre6">29</a>. <span class="literal">'2.2'</span></p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-311" id="calibre_link-1446" class="calibre6">30</a>. What is the difference between the values <span class="literal">10</span>, <span class="literal">10.0</span>, and <span class="literal">'10'</span>?</p></li>
+</ol>
+</section>
+<section>
+<h3 id="calibre_link-43" type="title" class="h1">String Concatenation and Replication</h3>
+<p class="noindent">When the <span class="literal">+</span> operator combines two string values, it joins the strings as the string concatenation operator. When the <span class="literal">*</span> operator is used on one string value and one integer value, it becomes the string replication operator. What do the following expressions evaluate to?</p>
+<ol class="order">
+<li class="calibre15"><p class="number1"><a href="#calibre_link-312" id="calibre_link-1447" class="calibre6">31</a>. <span class="literal">'Hello' + 'Hello' + 'Hello'</span></p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-313" id="calibre_link-1448" class="calibre6">32</a>. <span class="literal">'Hello' * 3</span></p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-314" id="calibre_link-1449" class="calibre6">33</a>. <span role="doc-pagebreak" id="calibre_link-2584" aria-label="4"></span><span class="literal">3 * 'Hello'</span></p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-315" id="calibre_link-1450" class="calibre6">34</a>. <span class="literal">(2 * 2) * 'Hello'</span></p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-316" id="calibre_link-1451" class="calibre6">35</a>. <span class="literal">'13' + '12'</span></p></li>
+</ol>
+<p class="indent">Which of the following expressions produce errors?</p>
+<ol class="order">
+<li class="calibre15"><p class="number1"><a href="#calibre_link-317" id="calibre_link-1452" class="calibre6">36</a>. <span class="literal">'Forgot the closing quote</span></p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-318" id="calibre_link-1453" class="calibre6">37</a>. <span class="literal">'Hello' * 3.0</span></p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-319" id="calibre_link-1454" class="calibre6">38</a>. <span class="literal">'Hello' + 3</span></p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-320" id="calibre_link-1455" class="calibre6">39</a>. <span class="literal">Hello + Hello + Hello</span></p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-321" id="calibre_link-1456" class="calibre6">40</a>. <span class="literal">'Alice' * 'Bob'</span></p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-322" id="calibre_link-1457" class="calibre6">41</a>. <span class="literal">'Hello' / 5</span></p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-323" id="calibre_link-1458" class="calibre6">42</a>. <span class="literal">'Hello' / 'Hello'</span></p></li>
+</ol>
+</section>
+<section>
+<h3 id="calibre_link-44" type="title" class="h1">Storing Values in Variables</h3>
+<p class="noindent">A variable is like a box in the computer’s memory that can store a single value. If you want to use the result of an evaluated expression later in your program, you can save it inside a variable. There are a few rules variable names must follow, and a good variable name describes the data the variable contains.</p>
+<p class="indent">The following programs store values in variables. Determine what each program outputs.</p>
+<ol class="order">
+<li class="calibre15"><p class="number1"><a href="#calibre_link-324" id="calibre_link-1459" class="calibre6">43</a>.</p>
+<pre class="pre1a">nephew = 'Jack'
+print(nephew)</pre></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-325" id="calibre_link-1460" class="calibre6">44</a>.</p>
+<pre class="pre1a">nephew = 'Jack'
+print('nephew')</pre></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-326" id="calibre_link-1461" class="calibre6">45</a>.</p>
+<pre class="pre1a">nephew = 'Jack'
+nephew = 'Albert'
+print(nephew)</pre></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-327" id="calibre_link-1462" class="calibre6">46</a>.</p>
+<pre class="pre1a">nephew = 'Jack'
+Nephew = 'Albert'
+print(nephew)</pre></li>
+</ol>
+<p class="indent">Why do the following programs cause an error?</p>
+<ol class="order">
+<li class="calibre15"><p class="number1"><a href="#calibre_link-328" id="calibre_link-1463" class="calibre6">47</a>.</p>
+<pre class="pre1a">nephew = Jack
+print(nephew)</pre></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-329" id="calibre_link-1464" class="calibre6">48</a>.</p>
+<pre class="pre1a">nephew = 'Jack'
+print(Jack)</pre></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-330" id="calibre_link-1465" class="calibre6">49</a>.</p>
+<pre class="pre1a">nephew = 'Jack'
+print(NEPHEW)</pre></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-331" id="calibre_link-1466" class="calibre6">50</a>. <span class="literal">print(nephew)</span></p></li>
+</ol>
+<p class="indent"><span role="doc-pagebreak" id="calibre_link-2585" aria-label="5"></span>Which of the following are valid variable names?</p>
+<ol class="order">
+<li class="calibre15"><p class="number1"><a href="#calibre_link-332" id="calibre_link-1467" class="calibre6">51</a>. <span class="literal">number_of_cats</span></p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-333" id="calibre_link-1468" class="calibre6">52</a>. <span class="literal">number-of-cats</span></p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-334" id="calibre_link-1469" class="calibre6">53</a>. <span class="literal">numberofcats</span></p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-335" id="calibre_link-1470" class="calibre6">54</a>. <span class="literal">numberOfCats</span></p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-336" id="calibre_link-1471" class="calibre6">55</a>. <span class="literal">_42</span></p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-337" id="calibre_link-1472" class="calibre6">56</a>. <span class="literal">_</span></p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-338" id="calibre_link-1473" class="calibre6">57</a>. <span class="literal">42</span></p></li>
+</ol>
+</section>
+<section>
+<h3 id="calibre_link-45" type="title" class="h1">Your First Program</h3>
+<p class="noindent">While the interactive shell is good for running Python instructions one at a time, to write entire Python programs you’ll need to enter the instructions into the file editor. <a href="#calibre_link-9" class="calibre6">Chapter 1</a> of <i class="calibre5">Automate the Boring Stuff with Python</i> includes a “Hello, world” program that uses comments, the <span class="literal">print()</span> and <span class="literal">input()</span> functions, and the value and operator concepts from the previous section. To further explore these building blocks of programs, label the following as a variable, function call, or string.</p>
+<ol class="order">
+<li class="calibre15"><p class="number1"><a href="#calibre_link-339" id="calibre_link-1474" class="calibre6">58</a>. <span class="literal">'hello'</span></p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-340" id="calibre_link-1475" class="calibre6">59</a>. <span class="literal">hello</span></p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-341" id="calibre_link-1476" class="calibre6">60</a>. <span class="literal">print()</span></p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-342" id="calibre_link-1477" class="calibre6">61</a>. <span class="literal">'print()'</span></p></li>
+</ol>
+<p class="indent">Do the following expressions cause an error or no error? If they cause no error, what do they evaluate to?</p>
+<ol class="order">
+<li class="calibre15"><p class="number1"><a href="#calibre_link-343" id="calibre_link-1478" class="calibre6">62</a>. <span class="literal">int('42')</span></p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-344" id="calibre_link-1479" class="calibre6">63</a>. <span class="literal">int('forty two')</span></p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-345" id="calibre_link-1480" class="calibre6">64</a>. <span class="literal">int('Hello')</span></p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-346" id="calibre_link-1481" class="calibre6">65</a>. <span class="literal">int(-42)</span></p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-347" id="calibre_link-1482" class="calibre6">66</a>. <span class="literal">int(3.1415)</span></p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-348" id="calibre_link-1483" class="calibre6">67</a>. <span class="literal">float(-42)</span></p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-349" id="calibre_link-1484" class="calibre6">68</a>. <span class="literal">str(-42)</span></p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-350" id="calibre_link-1485" class="calibre6">69</a>. <span class="literal">str(3.1415)</span></p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-351" id="calibre_link-1486" class="calibre6">70</a>. <span class="literal">str('Hello')</span></p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-352" id="calibre_link-1487" class="calibre6">71</a>. <span class="literal">str(float(int(3.14)))</span></p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-353" id="calibre_link-1488" class="calibre6">72</a>. <span role="doc-pagebreak" id="calibre_link-2586" aria-label="6"></span><span class="literal">str(3)</span></p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-354" id="calibre_link-1489" class="calibre6">73</a>. <span class="literal">str(3.0)</span></p></li>
+</ol>
+<p class="indent">Answer the following questions to further your understanding of the techniques used in the “Hello, world” program.</p>
+<ol class="order">
+<li class="calibre15"><p class="number1"><a href="#calibre_link-355" id="calibre_link-1490" class="calibre6">74</a>. Why does this two-line program cause an error?</p>
+<pre class="calibre16">number_of_cats = 4
+print('I have ' + number_of_cats)</pre></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-356" id="calibre_link-1491" class="calibre6">75</a>. Does <span class="literal">round(4.9)</span> evaluate to the integer <span class="literal">5</span> or the float <span class="literal">5.0</span>?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-357" id="calibre_link-1492" class="calibre6">76</a>. Describe what the <span class="literal">abs()</span> function returns.</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-358" id="calibre_link-1493" class="calibre6">77</a>. What does <span class="literal">abs(5)</span> return?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-359" id="calibre_link-1494" class="calibre6">78</a>. What does <span class="literal">abs(-5)</span> return?</p></li>
+</ol>
+</section>
+<section>
+<h3 id="calibre_link-46" type="title" class="h1">How Computers Store Data with Binary Numbers</h3>
+<p class="noindent">Binary, also called the <i class="calibre5">base-2 number system</i>, can represent all of the same numbers that our more familiar base-10 decimal number system can. Decimal has 10 digits, 0 through 9, but binary has only 0 and 1. By representing text, image, audio, and other kinds of data as binary numbers, computers can store and process the data. Answer the following questions about data representation.</p>
+<ol class="order">
+<li class="calibre15"><p class="number1"><a href="#calibre_link-360" id="calibre_link-1495" class="calibre6">79</a>. Why do computers use the base-2 binary number system instead of the more familiar base-10 decimal system humans use?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-361" id="calibre_link-1496" class="calibre6">80</a>. How many bits are in 1 byte?</p></li>
+</ol>
+<p class="indent">Determine how many bytes the units in 81 through 84 represent, both as an exponent like 2<sup class="calibre7">10</sup> and a whole number like 1,024. You can enter an expression like <span class="literal">2 ** 10</span> into the interactive shell to calculate 2<sup class="calibre7">10</sup>.</p>
+<ol class="order">
+<li class="calibre15"><p class="number1"><a href="#calibre_link-362" id="calibre_link-1497" class="calibre6">81</a>. Kilobyte</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-363" id="calibre_link-1498" class="calibre6">82</a>. Megabyte</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-364" id="calibre_link-1499" class="calibre6">83</a>. Gigabyte</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-365" id="calibre_link-1500" class="calibre6">84</a>. Terabyte</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-366" id="calibre_link-1501" class="calibre6">85</a>. Decimal 2 is 10 in binary. What is decimal 3 in binary?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-367" id="calibre_link-1502" class="calibre6">86</a>. Decimal 7 is 111 in binary. What is decimal 8 in binary?</p></li>
+</ol>
+</section>
+</section>
+<section>
+<h2 id="calibre_link-47" type="title" class="h"><span role="doc-pagebreak" id="calibre_link-2587" aria-label="7" class="calibre1"></span><img class="inline" src="../assets/inventwithpython.com/automate3workbook/images/000002.jpg" alt="A simple drawing of a sharpened pencil." /> Practice Projects</h2>
+<p class="noindent">The following practice projects will illustrate the concepts you’ve learned so far.</p>
+<section>
+<h3 id="calibre_link-48" type="title" class="h1">Rectangle Printer</h3>
+<p class="noindent">Write a program that prints a rectangle of capital <i class="calibre5">O</i> characters. For example, the following rectangle has a width of eight and a height of five:</p>
+<pre class="pre">OOOOOOOO
+OOOOOOOO
+OOOOOOOO
+OOOOOOOO
+OOOOOOOO</pre>
+<p class="indent">The program should always print a rectangle of <span class="literal">O</span> characters that has a height of five (that is, five rows), but the width should be based on an integer the user enters. For example, the output of this program could look like this:</p>
+<pre class="pre">Enter the width for the rectangle:
+<span class="codestrong">15</span>
+OOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOO</pre>
+<p class="indent">Here are some hints to help you write this program:</p>
+<ul class="bullet">
+<li class="bull">Call the <span class="literal">print()</span> function with a message to tell the user to enter the width, then call <span class="literal">input()</span> to accept the width.</li>
+<li class="bull">Store the width returned from <span class="literal">input()</span> in a variable.</li>
+<li class="bull">The <span class="literal">input()</span> function returns strings, but we want an integer form of the user input, so pass the variable to the <span class="literal">int()</span> function and store what <span class="literal">int()</span> returns in a variable.</li>
+<li class="bull">Use string replication to create a string of <i class="calibre5">O</i> letters of the desired width. (If a variable named <span class="literal">width</span> has <span class="literal">8</span> in it, then <span class="literal">O * width</span> will evaluate to <span class="literal">OOOOOOOO</span>.)</li>
+<li class="bull">Call <span class="literal">print()</span> five times to produce five rows of the string replication letters.</li>
+</ul>
+<p class="indent">Save this program in a file named <i class="calibre5">rectPrint.py</i>.</p>
+</section>
+<section>
+<h3 id="calibre_link-49" type="title" class="h1"><span role="doc-pagebreak" id="calibre_link-2588" aria-label="8" class="calibre1"></span>Perimeter and Area Calculator</h3>
+<p class="noindent">Write a program that accepts the width and length of a rectangular space from the user and then calculates both the perimeter and area of this space. For example, the output of the program could look like this:</p>
+<pre class="pre">Enter the width for the rectangle:
+<span class="codestrong">9</span>
+Enter the length for the rectangle:
+<span class="codestrong">5</span>
+
+Area of the rectangle:
+45
+Perimeter of the rectangle:
+28</pre>
+<p class="indent">Here are some hints to write this program:</p>
+<ul class="bullet">
+<li class="bull">Call the <span class="literal">print()</span> function with a message that tells the user to enter the width, and then call <span class="literal">input()</span> to accept the width. Do the same for the length.</li>
+<li class="bull">Store the width and length returned from <span class="literal">input()</span> in two separate variables.</li>
+<li class="bull">The <span class="literal">input()</span> function returns strings, but we want an integer form of the user input, so pass the variable to the <span class="literal">int()</span> function and store what <span class="literal">int()</span> returns in a variable.</li>
+<li class="bull">The perimeter is the sum of twice the width and twice the length. The area is the width multiplied by the length.</li>
+</ul>
+<p class="indent">Save this program in a file named <i class="calibre5">perimeterAreaCalculator.py</i>.</p>
+</section>
+</section>
+</section>
+</div>
+
+
+
+
+
+
+
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"8bd877e77db3400e83e36e899a2ab1fd","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+<style>.atbs-nav{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;justify-content:space-between;margin:1rem 0;padding:.7rem .8rem;border:1px solid #cfd8dc;border-radius:10px;background:#f6fbfd;font:14px/1.35 system-ui,-apple-system,sans-serif;}.atbs-nav-center{color:#455a64;font-weight:600;}.atbs-nav-link{text-decoration:none;color:#0b5b6b;background:#e6f3f7;border:1px solid #c7dfe7;border-radius:7px;padding:.42rem .55rem;display:inline-block;}.atbs-nav-link:hover{background:#d9edf3;}.atbs-nav-disabled{opacity:.55;cursor:not-allowed;}</style><nav class='atbs-nav' aria-label='Chapter pagination'><a class='atbs-nav-link' href='../book/chapter1.html' aria-label='Previous chapter'>&larr; Book Chapter 1</a><span class='atbs-nav-center'><a class='atbs-nav-link' href='../index.html'>Contents</a> Workbook Chapter 1</span><a class='atbs-nav-link' href='../book/chapter2.html' aria-label='Next chapter'>Book Chapter 2 &rarr;</a></nav></body></html>

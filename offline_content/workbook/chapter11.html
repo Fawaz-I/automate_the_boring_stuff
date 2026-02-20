@@ -1,0 +1,129 @@
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><link href="../assets/inventwithpython.com/automate3workbook/style.css" rel="stylesheet" type="text/css" /><title>Automate the Boring Stuff with Python Workbook: Projects and Exercises to Sharpen Your Python Skills</title></head><body><style>.atbs-nav{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;justify-content:space-between;margin:1rem 0;padding:.7rem .8rem;border:1px solid #cfd8dc;border-radius:10px;background:#f6fbfd;font:14px/1.35 system-ui,-apple-system,sans-serif;}.atbs-nav-center{color:#455a64;font-weight:600;}.atbs-nav-link{text-decoration:none;color:#0b5b6b;background:#e6f3f7;border:1px solid #c7dfe7;border-radius:7px;padding:.42rem .55rem;display:inline-block;}.atbs-nav-link:hover{background:#d9edf3;}.atbs-nav-disabled{opacity:.55;cursor:not-allowed;}</style><nav class='atbs-nav' aria-label='Chapter pagination'><a class='atbs-nav-link' href='../book/chapter11.html' aria-label='Previous chapter'>&larr; Book Chapter 11</a><span class='atbs-nav-center'><a class='atbs-nav-link' href='../index.html'>Contents</a> Workbook Chapter 11</span><a class='atbs-nav-link' href='../book/chapter12.html' aria-label='Next chapter'>Book Chapter 12 &rarr;</a></nav>
+
+
+
+
+
+
+<div class="calibre" id="calibre_link-19">
+<section type="chapter" role="doc-chapter" aria-labelledby="ch11">
+<h1 id="calibre_link-2673" type="title" class="h1ch"><span role="doc-pagebreak" id="calibre_link-2674" aria-label="75" class="calibre1"></span><span class="big">11</span><span class="break1"></span>ORGANIZING FILES</h1>
+<p class="noindent-c">Files are at the core of how computers store data. You can copy, rename, move, compress, and delete files yourself with the mouse and keyboard. But if you want to work with thousands or millions of files, you’ll save time by writing a program to do so. By learning to work with Python’s file-related features, you can automate complicated file management and minimize the potential for human error.</p>
+<aside type="sidebar" class="sidebar" aria-labelledby="side11" role="doc-example">
+<section>
+<h2 type="title" class="stitle" id="calibre_link-2675"><img class="inline" src="../assets/inventwithpython.com/automate3workbook/images/000000.jpg" alt="A simple drawing of a light bulb." /> LEARNING OBJECTIVES</h2>
+<ul class="b-bullet">
+<li class="bull">Understand how to move, copy, delete, and rename files automatically with Python code.</li>
+<li class="bull">Be able to compress and decompress files with the <span class="literal">zipfile</span> module.</li>
+<li class="bull">Walk a directory tree with the <span class="literal">os.walk()</span> function to run code over every file in a folder and its subfolders.</li>
+<li class="bull">Know the file-related functions provided by the <span class="literal">os</span>, <span class="literal">shutil</span>, and <span class="literal">pathlib</span> modules.</li>
+</ul>
+</section>
+</aside>
+<section>
+<h2 id="calibre_link-143" type="title" class="h"><span role="doc-pagebreak" id="calibre_link-2676" aria-label="76" class="calibre1"></span><img class="inline" src="../assets/inventwithpython.com/automate3workbook/images/000005.jpg" alt="A grey circle with a white question mark at the center" /> Practice Questions</h2>
+<p class="noindent">These questions test your understanding of Python’s <span class="literal">shutil</span>, <span class="literal">os</span>, and <span class="literal">zipfile</span> modules, as well as <span class="literal">Path</span> objects.</p>
+<section>
+<h3 id="calibre_link-144" type="title" class="h1">The shutil Module</h3>
+<p class="noindent">The <span class="literal">shutil</span> module has functions that let you copy, move, rename, and delete files in your Python programs. Answer the following questions about these functions.</p>
+<ol class="order">
+<li class="calibre15"><p class="number"><a href="#calibre_link-787" id="calibre_link-1921" class="calibre6">1</a>. What does <i class="calibre5">shutil</i> stand for?</p></li>
+<li class="calibre15"><p class="number"><a href="#calibre_link-788" id="calibre_link-1922" class="calibre6">2</a>. What character does Windows use to separate folders in a filepath?</p></li>
+<li class="calibre15"><p class="number"><a href="#calibre_link-789" id="calibre_link-1923" class="calibre6">3</a>. What character does macOS and Linux use to separate folders in a filepath?</p></li>
+<li class="calibre15"><p class="number"><a href="#calibre_link-790" id="calibre_link-1924" class="calibre6">4</a>. Which of these are actual functions: <span class="literal">shutil.copy()</span>, <span class="literal">shutil.copyfile()</span>, <span class="literal">shutil.copytree()</span>, or <span class="literal">shutil.filecopy()</span>?</p></li>
+<li class="calibre15"><p class="number"><a href="#calibre_link-791" id="calibre_link-1925" class="calibre6">5</a>. Can the <span class="literal">shutil.move()</span> function move files, folders, or both?</p></li>
+<li class="calibre15"><p class="number"><a href="#calibre_link-792" id="calibre_link-1926" class="calibre6">6</a>. What module is the <span class="literal">makedirs()</span> function in?</p></li>
+<li class="calibre15"><p class="number"><a href="#calibre_link-793" id="calibre_link-1927" class="calibre6">7</a>. Is there a difference between <span class="literal">os.makedirs('eggs')</span> and <span class="literal">os.makedirs (Path('eggs'))</span>?</p></li>
+<li class="calibre15"><p class="number"><a href="#calibre_link-794" id="calibre_link-1928" class="calibre6">8</a>. The <span class="literal">makedirs()</span> function normally raises an exception if the directory it tries to make already exists. What keyword argument can suppress this exception?</p></li>
+<li class="calibre15"><p class="number"><a href="#calibre_link-795" id="calibre_link-1929" class="calibre6">9</a>. Before running code that deletes files, why should you first do a dry run?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-796" id="calibre_link-1930" class="calibre6">10</a>. What functions in the <span class="literal">os</span> module delete files?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-797" id="calibre_link-1931" class="calibre6">11</a>. What function in the <span class="literal">shutil</span> module deletes an entire folder and its contents?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-798" id="calibre_link-1932" class="calibre6">12</a>. Do the deletion functions in the <span class="literal">os</span> and <span class="literal">shutil</span> modules delete files and folders permanently, or do they move them to the recycle bin?</p></li>
+</ol>
+</section>
+<section>
+<h3 id="calibre_link-145" type="title" class="h1">Walking a Directory Tree</h3>
+<p class="noindent">You can use the <span class="literal">os.walk()</span> function to run some code on every file in a folder and all of its subfolders. This is called <i class="calibre5">walking a directory tree</i>. Answer the following questions focusing on the <span class="literal">os.walk()</span> function and walking a directory tree.</p>
+<ol class="order">
+<li class="calibre15"><p class="number1"><a href="#calibre_link-799" id="calibre_link-1933" class="calibre6">13</a>. What are the three things that the <span class="literal">os.walk()</span> function returns for each iteration of a <span class="literal">for</span> loop?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-800" id="calibre_link-1934" class="calibre6">14</a>. What argument do you pass to <span class="literal">os.walk()</span> to have it start from the current working directory?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-801" id="calibre_link-1935" class="calibre6">15</a>. <span role="doc-pagebreak" id="calibre_link-2677" aria-label="77"></span>Does the following code delete every file in the <i class="calibre5">eggs</i> folder and its subfolders?</p>
+<pre class="calibre16">import os
+from pathlib import Path
+for folder_name, subfolders, filenames in os.walk('eggs'):
+&nbsp;&nbsp;&nbsp;&nbsp;for filename in filenames:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;os.unlink(Path(folder_name) / filename)</pre></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-802" id="calibre_link-1936" class="calibre6">16</a>. Using the <span class="literal">os.walk()</span> function, write code for a program that prints every subfolder in an <i class="calibre5">eggs</i> folder, including the name of the folder it resides in.</p></li>
+</ol>
+</section>
+<section>
+<h3 id="calibre_link-146" type="title" class="h1">Compressing Files with the zipfile Module</h3>
+<p class="noindent">Compressing a file reduces its size, which is useful when transferring it over the internet, and since a ZIP file can contain multiple files and subfolders, it’s a handy way to package several files into one. Your Python programs can create or extract from ZIP files using functions in the <span class="literal">zipfile</span> module.</p>
+<ol class="order">
+<li class="calibre15"><p class="number1"><a href="#calibre_link-803" id="calibre_link-1937" class="calibre6">17</a>. What does a <i class="calibre5">.zip</i> file contain?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-804" id="calibre_link-1938" class="calibre6">18</a>. Which of the following imports Python’s <span class="literal">zip</span> module: <span class="literal">import zipfile</span> or <span class="literal">import ZipFile</span>?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-805" id="calibre_link-1939" class="calibre6">19</a>. Which of the following opens a file named <i class="calibre5">example.zip</i>: <span class="literal">zipfile</span><span class="literal">.ZipFile('example.zip')</span> or <span class="literal">ZipFile.zipfile('example.zip')</span>?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-806" id="calibre_link-1940" class="calibre6">20</a>. What happens if you don’t pass the <span class="literal">compress_type=zipfile.ZIP_DEFLATED</span> keyword argument to the <span class="literal">write()</span> method?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-807" id="calibre_link-1941" class="calibre6">21</a>. As you increase the compression level from 0 to 9, how is the performance of the <span class="literal">ZipFile</span> object affected?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-808" id="calibre_link-1942" class="calibre6">22</a>. What method gives you a list of the content in a ZIP file?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-809" id="calibre_link-1943" class="calibre6">23</a>. Can ZIP files contain folders as well as files?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-810" id="calibre_link-1944" class="calibre6">24</a>. The <span class="literal">getinfo()</span> method returns an object with attributes <span class="literal">file_size</span> and <span class="literal">compress_size</span>. What do these attributes represent?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-811" id="calibre_link-1945" class="calibre6">25</a>. What <span class="literal">ZipFile</span> method extracts the entire contents of a ZIP file to the current working directory?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-812" id="calibre_link-1946" class="calibre6">26</a>. What <span class="literal">ZipFile</span> method extracts a single file from a ZIP file?</p></li>
+<li class="calibre15"><p class="number1"><a href="#calibre_link-813" id="calibre_link-1947" class="calibre6">27</a>. Say you have a file named <i class="calibre5">contents.txt</i>. Write the code to put it into a ZIP file named <i class="calibre5">contents.zip</i> at the maximum compression level.</p></li>
+</ol>
+</section>
+</section>
+<section>
+<h2 id="calibre_link-147" type="title" class="h"><span role="doc-pagebreak" id="calibre_link-2678" aria-label="78" class="calibre1"></span><img class="inline" src="../assets/inventwithpython.com/automate3workbook/images/000002.jpg" alt="A simple drawing of a sharpened pencil." /> Practice Projects</h2>
+<p class="noindent">Automate mundane tasks with these short projects.</p>
+<section>
+<h3 id="calibre_link-148" type="title" class="h1">Duplicate Filename Finder</h3>
+<p class="noindent">Let’s say your coworker has a massive project consisting of hundreds of <i class="calibre5">.txt</i> files in different folders on their computer, but they want to make sure the filenames are all unique so that they don’t accidentally copy over any of them. Create a function named <span class="literal">find_dup_filenames(folder)</span> to find files with the same filename in different subfolders of <span class="literal">folder</span>. This function should return a dictionary whose keys are filenames and whose values are lists of absolute paths to the files. For example, let’s say the following files exist on your computer:</p>
+<pre class="pre">C:\Users\Al\spam.txt
+C:\Users\Al\eggs.txt
+C:\Users\Al\subfolder1\spam.txt</pre>
+<p class="indent">Calling <span class="literal">find_dup_filenames(r'C:\Users\Al')</span> would return this dictionary:</p>
+<pre class="pre">{'spam.txt': ['C:\\Users\\Al\\spam.txt', 'C:\\Users\\Al\\subfolder1\\spam.txt']}</pre>
+<p class="indent">Your program should call this function, then go through the returned dictionary to print duplicate filenames. Print the filename first, then each of the absolute filepaths with four spaces of indentation, so that the output looks like this:</p>
+<pre class="pre">spam.txt
+&nbsp;&nbsp;&nbsp;&nbsp;C:\Users\Al\spam.txt
+&nbsp;&nbsp;&nbsp;&nbsp;C:\Users\Al\subfolder1\spam.txt</pre>
+<p class="indent">You don’t need to test this program on your computer’s root folder; running it on every file on your computer would take too long. Instead, select your home folder or another folder containing only a handful of files and subfolders. Once you know your program works correctly, run it on your root folder to find all duplicate filenames on your computer.</p>
+<p class="indent">Save this program in a file named <i class="calibre5">dupFilename.py</i>.</p>
+</section>
+<section>
+<h3 id="calibre_link-149" type="title" class="h1">Alphabetized Folders</h3>
+<p class="noindent">Let’s say your manager has very odd ideas about how the folders on your computer should be organized. They want you to have 26 folders named <i class="calibre5">A</i> through <i class="calibre5">Z</i>; in each of these folders, there should be another 26 folders for each letter of the alphabet. For example, the <i class="calibre5">A</i> folder would have 26 folders named <i class="calibre5">AA</i> through <i class="calibre5">AZ</i>, the <i class="calibre5">B</i> folder would have 26 folders named <i class="calibre5">BA</i> through <i class="calibre5">BZ</i>, and so on. This means you need to create 702 folders on your computer. This task is boring (and not useful), but your manager wants it done.</p>
+<p class="indent"><span role="doc-pagebreak" id="calibre_link-2679" aria-label="79"></span>Create a function named <span class="literal">make_alpha_folders(root_folder)</span> that creates these 702 subfolders in the <span class="literal">root_folder</span> folder. For example, calling <span class="literal">make</span><span class="literal">_alpha_folders(r'C:\Users\Al\Desktop')</span> would create these folders:</p>
+<pre class="pre">C:\Users\Al\Desktop\A
+C:\Users\Al\Desktop\A\AA
+C:\Users\Al\Desktop\A\AB
+C:\Users\Al\Desktop\A\AC
+<span class="codeitalic">--snip--</span>
+C:\Users\Al\Desktop\B
+C:\Users\Al\Desktop\B\BA
+C:\Users\Al\Desktop\B\BB
+<span class="codeitalic">--snip--</span>
+C:\Users\Al\Desktop\Z\ZA
+<span class="codeitalic">--snip--</span>
+C:\Users\Al\Desktop\Z\ZZ</pre>
+<p class="indent">Save this program in a file named <i class="calibre5">alphaFolders.py</i>.</p>
+</section>
+<section>
+<h3 id="calibre_link-150" type="title" class="h1">ZIP File Folder Extractor</h3>
+<p class="noindent">Let’s say your coworker has thousands of ZIP files, but they only want to extract files in a particularly named folder inside the ZIP file. Write a function named <span class="literal">extract_in_folder(zip_filename, folder)</span> that takes the string of a ZIP filename and a string of a folder name. The function should extract only the files in that folder of the ZIP file to the current working directory. For example, if <i class="calibre5">eggs.zip</i> contains the files <i class="calibre5">data1.txt</i>, <i class="calibre5">spam/data2.txt</i>, <i class="calibre5">spam/data3.txt</i>, and <i class="calibre5">bacon/data4.txt</i> and you call <span class="literal">extract_in_folder('eggs.zip', 'spam')</span>, the function should extract <i class="calibre5">data2.txt</i> and <i class="calibre5">data3.txt</i> only.</p>
+<p class="indent">Save this program in a file named <i class="calibre5">extractZipFolder.py</i>.<span role="doc-pagebreak" id="calibre_link-2680" aria-label="80"></span></p>
+</section>
+</section>
+</section>
+</div>
+
+
+
+
+
+
+
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"8bd877e77db3400e83e36e899a2ab1fd","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+<style>.atbs-nav{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;justify-content:space-between;margin:1rem 0;padding:.7rem .8rem;border:1px solid #cfd8dc;border-radius:10px;background:#f6fbfd;font:14px/1.35 system-ui,-apple-system,sans-serif;}.atbs-nav-center{color:#455a64;font-weight:600;}.atbs-nav-link{text-decoration:none;color:#0b5b6b;background:#e6f3f7;border:1px solid #c7dfe7;border-radius:7px;padding:.42rem .55rem;display:inline-block;}.atbs-nav-link:hover{background:#d9edf3;}.atbs-nav-disabled{opacity:.55;cursor:not-allowed;}</style><nav class='atbs-nav' aria-label='Chapter pagination'><a class='atbs-nav-link' href='../book/chapter11.html' aria-label='Previous chapter'>&larr; Book Chapter 11</a><span class='atbs-nav-center'><a class='atbs-nav-link' href='../index.html'>Contents</a> Workbook Chapter 11</span><a class='atbs-nav-link' href='../book/chapter12.html' aria-label='Next chapter'>Book Chapter 12 &rarr;</a></nav></body></html>
